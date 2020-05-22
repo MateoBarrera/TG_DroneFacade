@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/distancia_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".distancia">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="238dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:text="@string/distancia_emergente_h"
+        android:textColor="@color/colortext" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_angulo_h"
+            android:layout_width="117dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorPrimary"
+            android:cursorVisible="false"
+            android:elegantTextHeight="false"
+            android:foregroundTint="@color/colorPrimary"
+            android:gravity="center"
+            android:hint="@string/distancia_emergente_hint"
+            android:inputType="number|numberDecimal"
+            android:shadowColor="@color/colorPrimary"
+            android:singleLine="true"
+            android:text="@string/_90_0"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorLink="@color/colorPrimary"
+            android:textSize="14sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="239dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:text="@string/distancia_emergente_v"
+        android:textColor="@color/colortext" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_angulo_v"
+            android:layout_width="117dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorPrimary"
+            android:cursorVisible="false"
+            android:elegantTextHeight="false"
+            android:foregroundTint="@color/colorPrimary"
+            android:gravity="center"
+            android:hint="@string/distancia_emergente_hint"
+            android:inputType="numberDecimal"
+            android:shadowColor="@color/colorPrimary"
+            android:singleLine="true"
+            android:text="@string/_60_0"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorLink="@color/colorPrimary"
+            android:textSize="14sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
+
+

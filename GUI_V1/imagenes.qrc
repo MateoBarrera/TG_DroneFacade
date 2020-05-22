@@ -1,0 +1,79 @@
+<RCC>
+  <qresource prefix="psi">
+    <file>Imagenes/PSI.svg</file>
+  </qresource>
+  <qresource prefix="resultados">
+    <file>Imagenes/PackIconos/resultados/ic_art_track.png</file>
+  </qresource>
+  <qresource prefix="ejecucion">
+    <file>Imagenes/PackIconos/ejecucion/ic_slow_motion_video._white.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_timeline.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_swap_vertical_circle.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_stop.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_slow_motion_video.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_settings_power.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_settings_input_antenna.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_save.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_restore.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_report_problem.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_report.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_remove_circle_outline.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_play_circle_outline.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_pause_circle_outline.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_lock_outline.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_lock_open.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_launch.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_insert_chart.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_highlight_off.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_gps_not_fixed.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_gps_fixed.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_battery_full.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_battery_alert.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_battery_90.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_battery_80.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_battery_60.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_battery_50.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_battery_30.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_battery_20.png</file>
+  </qresource>
+  <qresource prefix="procesamiento">
+    <file>Imagenes/PackIconos/procesamiento/ic_add_a_photo.png</file>
+    <file>Imagenes/PackIconos/procesamiento/ic_insert_photo_proc.png</file>
+  </qresource>
+  <qresource prefix="configuracion">
+    <file>Imagenes/PackIconos/configuracion/ic_tune.png</file>
+    <file>Imagenes/PackIconos/configuracion/ic_settings_white.png</file>
+    <file>Imagenes/PackIconos/configuracion/ic_settings.png</file>
+    <file>Imagenes/PackIconos/configuracion/ic_place_.png</file>
+    <file>Imagenes/PackIconos/configuracion/ic_perm_contact_calendar.png</file>
+    <file>Imagenes/PackIconos/configuracion/ic_near_me.png</file>
+    <file>Imagenes/PackIconos/configuracion/ic_map.png</file>
+    <file>Imagenes/PackIconos/configuracion/ic_list.png</file>
+    <file>Imagenes/PackIconos/configuracion/ic_important_devices.png</file>
+    <file>Imagenes/PackIconos/configuracion/ic_featured_play_list.png</file>
+    <file>Imagenes/PackIconos/configuracion/ic_edit_location.png</file>
+    <file>Imagenes/PackIconos/configuracion/ic_devices.png</file>
+    <file>Imagenes/PackIconos/configuracion/ic_business.png</file>
+    <file>Imagenes/PackIconos/configuracion/ic_add_location.png</file>
+    <file>Imagenes/PackIconos/configuracion/ic_add_circle_outline.png</file>
+  </qresource>
+  <qresource prefix="Iconos">
+    <file>Imagenes/dron_logo_mini.png</file>
+  </qresource>
+  <qresource prefix="incio">
+    <file>Imagenes/PackIconos/inicio/ic_queue_play_next.png</file>
+    <file>Imagenes/PackIconos/inicio/ic_library_add.png</file>
+    <file>Imagenes/PackIconos/inicio/ic_info_outline_white.png</file>
+    <file>Imagenes/PackIconos/inicio/ic_info_outline_blue.png</file>
+    <file>Imagenes/PackIconos/inicio/ic_home_white.png</file>
+    <file>Imagenes/PackIconos/inicio/ic_home_blue.png</file>
+    <file>Imagenes/PackIconos/inicio/ic_help_outline_blue.png</file>
+  </qresource>
+  <qresource prefix="uv">
+    <file>Imagenes/Univalle.svg</file>
+  </qresource>
+  <qresource prefix="dron">
+    <file>Imagenes/DronLogoInicio.svg</file>
+    <file>Imagenes/DronBack.png.svg</file>
+  </qresource>
+</RCC>
