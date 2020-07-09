@@ -43,5 +43,10 @@
     <string name="puntos_text">Punto coordenados</string>
     <string name="capturar_text">Espere...</string>
     <string name="capturar_title">Leyendo ubicación GPS</string>
+    <string name="longitude">longitud</string>
+    <string name="latitude">latitud</string>
+    <string name="satellitesnumber">numero de satelites</string>
+    <string name="time">tiempo</string>
+    <string name="quality">quality</string>
 
 </resources>

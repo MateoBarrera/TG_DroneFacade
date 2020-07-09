@@ -2,14 +2,11 @@ package com.example.appdrone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Handler;
 
 
 import android.os.Bundle;
-import android.transition.Slide;
-import android.view.Gravity;
 
 public class splash extends AppCompatActivity {
 
@@ -26,5 +23,8 @@ public class splash extends AppCompatActivity {
                 finish();
             }
         },2000);
+    }
+
+    public static class locationMain {
     }
 }

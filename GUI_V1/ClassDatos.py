@@ -6,7 +6,7 @@ class mainDatos:
 
         #CONFIGURACIÓN
         ##camara
-        self.camara_id= "ZED StereoLab ©"
+        self.camara_id= "ZED StereoLab"
         self.camara_fx= 699.839
         self.camara_fy= 699.839
         self.camara_cx= 675.962

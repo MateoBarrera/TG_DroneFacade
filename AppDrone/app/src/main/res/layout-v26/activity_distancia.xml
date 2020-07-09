@@ -168,18 +168,6 @@
         app:layout_constraintVertical_bias="0.703"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/distancia_view"
-        android:layout_width="94dp"
-        android:layout_height="37dp"
-        android:text="@string/desplazarce"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.871" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="150dp"

@@ -25,22 +25,34 @@
     <file>Imagenes/PackIconos/ejecucion/ic_launch.png</file>
     <file>Imagenes/PackIconos/ejecucion/ic_insert_chart.png</file>
     <file>Imagenes/PackIconos/ejecucion/ic_highlight_off.png</file>
-    <file>Imagenes/PackIconos/ejecucion/ic_gps_not_fixed.png</file>
-    <file>Imagenes/PackIconos/ejecucion/ic_gps_fixed.png</file>
     <file>Imagenes/PackIconos/ejecucion/ic_battery_full.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_imu_ok.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_imu_error.png</file>
     <file>Imagenes/PackIconos/ejecucion/ic_battery_alert.png</file>
-    <file>Imagenes/PackIconos/ejecucion/ic_battery_90.png</file>
     <file>Imagenes/PackIconos/ejecucion/ic_battery_80.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_gps_poor.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_gps_ok.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_gps_middle.png</file>
+    <file>Imagenes/PackIconos/ejecucion/ic_gps_bad.png</file>
     <file>Imagenes/PackIconos/ejecucion/ic_battery_60.png</file>
     <file>Imagenes/PackIconos/ejecucion/ic_battery_50.png</file>
     <file>Imagenes/PackIconos/ejecucion/ic_battery_30.png</file>
     <file>Imagenes/PackIconos/ejecucion/ic_battery_20.png</file>
   </qresource>
   <qresource prefix="procesamiento">
+    <file>Imagenes/PackIconos/procesamiento/ic_insert_photo.png</file>
+    <file>Imagenes/PackIconos/procesamiento/ic_photo_size_select_large.png</file>
+    <file>Imagenes/PackIconos/procesamiento/ic_perm_media.png</file>
+    <file>Imagenes/PackIconos/procesamiento/ic_insert_photo_proc_1.png</file>
+    <file>Imagenes/PackIconos/procesamiento/ic_crop.png</file>
+    <file>Imagenes/PackIconos/procesamiento/ic_collections.png</file>
+    <file>Imagenes/PackIconos/procesamiento/ic_fast_forward.png</file>
+    <file>Imagenes/PackIconos/procesamiento/ic_fast_rewind.png</file>
     <file>Imagenes/PackIconos/procesamiento/ic_add_a_photo.png</file>
     <file>Imagenes/PackIconos/procesamiento/ic_insert_photo_proc.png</file>
   </qresource>
   <qresource prefix="configuracion">
+    <file>Imagenes/PackIconos/configuracion/ic_note_add.png</file>
     <file>Imagenes/PackIconos/configuracion/ic_tune.png</file>
     <file>Imagenes/PackIconos/configuracion/ic_settings_white.png</file>
     <file>Imagenes/PackIconos/configuracion/ic_settings.png</file>

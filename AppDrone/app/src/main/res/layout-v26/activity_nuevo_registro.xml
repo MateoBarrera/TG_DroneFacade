@@ -145,15 +145,6 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView13"
-                android:layout_width="1dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center|end"
-                android:layout_weight="1"
-                android:contentDescription="@string/logo_univalle"
-                app:srcCompat="@drawable/univalle" />
-
-            <ImageView
                 android:id="@+id/imageView16"
                 android:layout_width="37dp"
                 android:layout_height="27dp"
@@ -177,10 +168,10 @@
         android:text="@string/desplazarce"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintHorizontal_bias="0.034"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.757" />
+        app:layout_constraintVertical_bias="0.75" />
 
     <TextView
         android:id="@+id/textView4"
@@ -207,6 +198,69 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.248" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="23dp"
+        android:layout_height="27dp"
+        android:layout_gravity="center|end"
+        android:layout_weight="1"
+        android:contentDescription="@string/logo_univalle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.754"
+        app:srcCompat="@drawable/univalle" />
+
+    <TextView
+        android:id="@+id/longView"
+        android:layout_width="82dp"
+        android:layout_height="18dp"
+        android:text="@string/app_name"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="495dp" />
+
+    <TextView
+        android:id="@+id/latView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="581dp" />
+
+    <TextView
+        android:id="@+id/altView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="611dp" />
+
+    <TextView
+        android:id="@+id/timeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="644dp" />
+
+    <TextView
+        android:id="@+id/qualityView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="683dp" />
+
+    <TextView
+        android:id="@+id/satelitesView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="683dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

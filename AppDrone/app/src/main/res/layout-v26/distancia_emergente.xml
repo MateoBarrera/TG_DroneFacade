@@ -34,7 +34,6 @@
             android:inputType="number|numberDecimal"
             android:shadowColor="@color/colorPrimary"
             android:singleLine="true"
-            android:text="@string/_90_0"
             android:textColorHighlight="@color/colorPrimary"
             android:textColorLink="@color/colorPrimary"
             android:textSize="14sp" />

@@ -22,7 +22,7 @@ public class distancia extends AppCompatActivity {
     public float superpocision_de_imagenes = 0.35f;
     public float distancia_metrica =0.0f;
     public float desplazamiento_metrico = 0.0f;
-    public float cv_h = 90.0f;
+    public float cv_h = 50.0f;
     public float cv_v = 60.0f;
 
     @SuppressLint({"CutPasteId", "RtlHardcoded"})
@@ -54,7 +54,7 @@ public class distancia extends AppCompatActivity {
     public void nuevo_registro(View view) {
           if (distancia_metrica>=2.0f){
               desplazamiento_metrico = (float) (2.0f*(Math.tan(Math.toRadians(cv_h/2.0))*(1-superpocision_de_imagenes) *distancia_metrica));
-              Intent intent = new Intent(this,nuevo_registro.class);
+              Intent intent = new Intent(this,locationMain.class);
               startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
          }
           else{
@@ -74,11 +74,15 @@ public class distancia extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.distancia_emergente, null);
+        angulo_h = dialogView.findViewById(R.id.input_angulo_h);
+        angulo_v = dialogView.findViewById(R.id.input_angulo_v);
+        angulo_h.setText(String.valueOf(cv_h));
+        angulo_v.setText(String.valueOf(cv_v));
         builder.setView(dialogView);
+
                 builder.setMessage(R.string.distancia_emergente_text).setPositiveButton(R.string.aceptar_btn, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                angulo_h = dialogView.findViewById(R.id.input_angulo_h);
-                angulo_v = dialogView.findViewById(R.id.input_angulo_v);
+
                 onAjustarCVClick();
             }
         }).setNegativeButton(R.string.cancelar_btn, new DialogInterface.OnClickListener() {
