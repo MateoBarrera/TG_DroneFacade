@@ -1,15 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #from PyQt5.QtGui import QApplication, QMainWindow
-#import pyqtgraph.examples
-#pyqtgraph.examples.run()
-
+import matplotlib.pyplot as plt
+import pandas as pd
+import xml.etree.ElementTree as ET
+import math
 
 import sys
 import re
 import pyqtgraph as pg
 import numpy as np
 import cv2
+import imutils
 from imutils import paths
 from pyqtgraph import PlotWidget, plot
 from ClassDatos import mainDatos
@@ -58,10 +60,12 @@ class mywindow(QtWidgets.QMainWindow):
 
         self.hour = [1,2,3,4,5,6,7,8,9,10]    
         self.temperature = [30,32,34,32,33,31,29,32,35,45]
-        #self.ui.confcalcularDistancia.clicked.connect(self.plot)
+        self.wp_entrada = []
         self.ui.confimportarWaypoints.clicked.connect(self.confOpenFile)
-        #pg.PlotWidget.
-        self.ui.conftrayectoriaplot.setBackground(background='#faf9fa')
+        self.ui.conftrayectoriaplot.canvas.ax.set_facecolor('#faf9fa')
+        self.ui.conftrayectoriaplot.canvas.ax.mouse_init(rotate_btn=1, zoom_btn=3)
+        #self.ui.conftrayectoriaplot.canvas.draw()
+
 
         self.flag_validacion = False
         self.reg_exp_1 = "^[a-z-A-Z_0-9áéíóúñÑ]+|([a-z-A-Z_0-9áéíóúñÑ]+\s[a-z-A-Z_0-9áéíóúñÑ]+)+"
@@ -92,6 +96,8 @@ class mywindow(QtWidgets.QMainWindow):
         pg.setConfigOptions(antialias=True)
         self.imagenes_entrada = []
         self.imagen_entrada_index = 0
+        self.image_out_size = []
+        self.directorioImagenes = ""
         self.alto_img_in = 0 
         self.acho_img_in = 0 
         self.canales_img_in = 0
@@ -132,10 +138,10 @@ class mywindow(QtWidgets.QMainWindow):
         self.roi.setZValue(10)
         self.roi.sigRegionChanged.connect(self.actualizarROI)
 
-        self.image_out = cv2.imread("imagen_2.jpg", cv2.IMREAD_COLOR)
-        self.image_out = cv2.cvtColor(self.image_out, cv2.COLOR_BGR2RGB)
-        self.image_out_size = self.image_out.shape
+        self.image_out = cv2.imread("imagen_1.png", cv2.IMREAD_COLOR)
         self.visualizarImageOut(self.image_out)
+
+        self.ui.procGenerarMosaico.clicked.connect(self.stitching)
 
 
 
@@ -215,13 +221,51 @@ class mywindow(QtWidgets.QMainWindow):
             self.ui.confcomboMunicipio.addItem(self.datos.municipios[index])
 
     def confOpenFile(self):
-        filename = QtWidgets.QFileDialog.getOpenFileName(self, 'Cargar Waypoints', '/home')
+        filename = QtWidgets.QFileDialog.getOpenFileName(self, 'Cargar Waypoints', '/home', filter="gpx(*.gpx)")
         if filename[0]:
-            f = open(filename[0],'r')
             self.ui.confrutaWaypoints.setText(filename[0])
+            self.wp_entrada = self.leerFicheroGPX(filename[0])
+            ydata = self.wp_entrada['lat'].tolist()
+            xdata = self.wp_entrada['lon'].tolist()
+            zdata = self.wp_entrada['ele'].tolist()
+            media_z = self.wp_entrada.mean(axis=0)
+            media_z = media_z['ele']
+            
+            self.ui.conftrayectoriaplot.canvas.ax.set_zlim(media_z*0.9,media_z*1.1)
+            azim_componentes=((ydata[-1]-ydata[0])/(xdata[-1]-xdata[0]))
+            azim = (math.atan(azim_componentes)*math.pi/180)
+            self.ui.conftrayectoriaplot.canvas.ax.view_init(elev=20., azim=azim+45)
 
-            with f:
-                data = f.read()  
+            self.ui.conftrayectoriaplot.canvas.ax.scatter(xdata, ydata, zdata)
+            self.ui.conftrayectoriaplot.canvas.ax.hold(True)
+            self.ui.conftrayectoriaplot.canvas.ax.Patch3D( zs=980, zdir='z')
+            self.ui.conftrayectoriaplot.canvas.draw()
+
+
+    def leerFicheroGPX (self,dir):
+        df = pd.DataFrame(columns=['wpt','lat','lon','ele'])
+        tree = ET.parse(dir)
+        root = tree.getroot()
+        i=1
+        self.ui.confdescripcionWpText.setText("CARGANDO WAYPOINTS...")
+        
+        for elem in root:
+
+            lat = elem.attrib['lat']
+            data_lat = (float(lat.replace('"', '').replace(',', '')))
+            lon = elem.attrib['lon']
+            data_lon = (float(lon.replace('"', '').replace(',', '')))
+
+            if (str(elem[0]).find('ele') != -1):
+                elev = elem[0].text
+                data_eve = (float(elev.replace('"', '').replace(',', '')))
+            else:
+                elev = elev
+                data_eve = (float(elev.replace('"', '').replace(',', '')))
+            df = df.append({'wpt': str(i), 'lat': data_lat, 'lon': data_lon, 'ele': data_eve},ignore_index=True)
+            self.ui.confdescripcionWpText.append('Waypoint '+str(i)+':      Latitud >'+ str(data_lat)[:10]+'        Longitud >'+str(data_lon)[:10]+'       Elevación >'+str(data_eve)[:5]+' m.')
+            i=i+1
+        return df
     
     def validacion_conf(self):
         validacion = QtGui.QRegExpValidator(QtCore.QRegExp(self.reg_exp_1))
@@ -334,12 +378,13 @@ class mywindow(QtWidgets.QMainWindow):
         
     def procCargarImagenes(self, directorioImagenes):
         imagePaths = sorted(list(paths.list_images(directorioImagenes)))
+        self.directorioImagenes=directorioImagenes
         i=0 
         for imagePath in imagePaths:
-            image = cv2.imread(imagePath, cv2.IMREAD_COLOR)
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+            image_input = cv2.imread(imagePath, cv2.IMREAD_COLOR)
+            image = cv2.cvtColor(image_input, cv2.COLOR_BGR2RGB)
             i = i+1
-            self.imagenes_entrada.append(image)
+            self.imagenes_entrada.append(image_input)
         
         self.alto_img_in,  self.ancho_img_in, self.canales_img_in = image.shape  
         self.numero_imagenes = i
@@ -350,8 +395,9 @@ class mywindow(QtWidgets.QMainWindow):
         self.p1_inputView.clear()
         image_view = pg.ImageItem()
         self.p1_inputView.addItem(image_view)
-        image_view.setImage(self.imagenes_entrada[self.imagen_entrada_index])
-        image_view.translate(0,self.image_out_size[0])
+        image_view.setImage(cv2.cvtColor(self.imagenes_entrada[self.imagen_entrada_index],cv2.COLOR_BGR2RGB))
+        image_size = self.imagenes_entrada[self.imagen_entrada_index].shape
+        image_view.translate(0,image_size[0])
         image_view.rotate(270)
         self.ui.procNumeroImg.setText(str(self.imagen_entrada_index+1)+"/"+str(self.numero_imagenes))
         self.p1_inputView.autoRange()
@@ -366,13 +412,118 @@ class mywindow(QtWidgets.QMainWindow):
             self.imagen_entrada_index=self.imagen_entrada_index-1
             self.visualizarImagenesEntrada()      
 
+    def stitching(self):
+        # initialize OpenCV's image sticher object and then perform the image
+        # stitching
+        #self.textBrowser.append('[INFO] stitching Images')
+        print("[INFO] stitching images...")
+        stitcher = cv2.createStitcher() if imutils.is_cv3() else cv2.Stitcher_create()
+        (status, stitched) = stitcher.stitch(self.imagenes_entrada)
+
+        # if the status is '0', then OpenCV successfully performed image
+        # stitching
+        if status == 0:
+            # check to see if we supposed to crop out the largest rectangular
+            # region from the stitched image
+            if self.ui.procRecortarImage.isChecked():
+                # create a 10 pixel border surrounding the stitched image
+                #self.textBrowser.append('[INFO] Recortando')
+                #self.textBrowser.setText('[INFO] Recortando...')
+                print("[INFO] cropping...")
+                stitched = cv2.copyMakeBorder(stitched, 10, 10, 10, 10,
+                    cv2.BORDER_CONSTANT, (0, 0, 0))
+
+                # convert the stitched image to grayscale and threshold it
+                # such that all pixels greater than zero are set to 255
+                # (foreground) while all others remain 0 (background)
+                gray = cv2.cvtColor(stitched, cv2.COLOR_BGR2GRAY)
+                thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY)[1]
+
+                # find all external contours in the threshold image then find
+                # the *largest* contour which will be the contour/outline of
+                # the stitched image
+                cnts = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,
+                    cv2.CHAIN_APPROX_SIMPLE)
+                cnts = imutils.grab_contours(cnts)
+                c = max(cnts, key=cv2.contourArea)
+
+                # allocate memory for the mask which will contain the
+                # rectangular bounding box of the stitched image region
+                mask = np.zeros(thresh.shape, dtype="uint8")
+                (x, y, w, h) = cv2.boundingRect(c)
+                cv2.rectangle(mask, (x, y), (x + w, y + h), 255, -1)
+
+                # create two copies of the mask: one to serve as our actual
+                # minimum rectangular region and another to serve as a counter
+                # for how many pixels need to be removed to form the minimum
+                # rectangular region
+                minRect = mask.copy()
+                sub = mask.copy()
+
+                # keep looping until there are no non-zero pixels left in the
+                # subtracted image
+                while cv2.countNonZero(sub) > 0:
+                    # erode the minimum rectangular mask and then subtract
+                    # the thresholded image from the minimum rectangular mask
+                    # so we can count if there are any non-zero pixels left
+                    minRect = cv2.erode(minRect, None)
+                    sub = cv2.subtract(minRect, thresh)
+
+                # find contours in the minimum rectangular mask and then
+                # extract the bounding box (x, y)-coordinates
+                cnts = cv2.findContours(minRect.copy(), cv2.RETR_EXTERNAL,
+                    cv2.CHAIN_APPROX_SIMPLE)
+                cnts = imutils.grab_contours(cnts)
+                c = max(cnts, key=cv2.contourArea)
+                (x, y, w, h) = cv2.boundingRect(c)
+
+                # use the bounding box coordinates to extract the our final
+                # stitched image
+                stitched = stitched[y:y + h, x:x + w]
+            
+            # write the output stitched image to disk
+            
+            if self.ui.procResizeOutput.isChecked():
+
+                # M = cv2.getRotationMatrix2D((width/2,height/2),90,1)
+                # stitched = cv2.warpAffine(stitched,M,(width,height))
+                
+                stitched = cv2.rotate(stitched, cv2.ROTATE_90_COUNTERCLOCKWISE)
+            # cv2.imshow("estaes",stitched)
+            cv2.imwrite("/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/GUI_V1/Salida/Output.png", stitched)
+
+            # display the output stitched image to our screen
+            #stitched = cv2.cvtColor(stitched, cv2.COLOR_BGR2RGB)
+            
+            # cv2.imshow("estanoes",stitched)
+            height, width, channel = stitched.shape
+            step = channel * width
+            self.image_out_size = stitched.shape
+            self.visualizarImageOut(stitched)
+            #qImg = QImage(stitched.data, width, height, step, QImage.Format_RGB888)
+            #self.imagelabel.setPixmap(QPixmap.fromImage(qImg))
+            # cv2.imshow("Stitched", stitched)
+            # cv2.waitKey(0)
+
+            # otherwise the stitching failed, likely due to not enough keypoints)
+            # being 
+            #self.textBrowser.setText('[INFO] Stitching finalizado')
+            print("termino")
+            #self.timer_process.stop()
+        else:
+            #self.textBrowser.setText("[INFO] image stitching failed ({})".format(status))
+            print("[INFO] image stitching failed ({})".format(status))
+
     def visualizarImageOut(self, image_out):
+        self.p1_imageView.clear()
+        self.image_out_size = image_out.shape
+        self.image_out = cv2.cvtColor(image_out, cv2.COLOR_BGR2RGB)
         self.image_view = pg.ImageItem()
         self.p1_imageView.addItem(self.image_view)
-        self.image_view.setImage(image_out)
+        self.image_view.setImage(self.image_out)
         self.image_view.translate(0,self.image_out_size[0])
         self.image_view.rotate(270)
-        #self.p1_imageView.autoRange()
+        self.p1_imageView.autoRange()
 
     def interaccion(self):
         if(self.ui.procHabilitarInteraccion.isChecked()):
@@ -380,7 +531,6 @@ class mywindow(QtWidgets.QMainWindow):
         else:
             self.p1_imageView.vb.setMouseEnabled(y=False,x=False)
             self.p1_imageView.autoRange()
-
 
     def actualizarROI(self):
         self.p2_imageView.clear()
@@ -415,7 +565,6 @@ class mywindow(QtWidgets.QMainWindow):
         else:
             self.p1_imageView.removeItem(self.roi)
             self.ui.procimageView.removeItem(self.p2_imageView)
-
 
     def keyPressEvent(self, e):
 
