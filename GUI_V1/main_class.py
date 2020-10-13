@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#from PyQt5.QtGui import QApplication, QMainWindow
 import pandas as pd
 import xml.etree.ElementTree as ET
 import math
@@ -17,7 +16,7 @@ from pyqtgraph import PlotWidget, plot
 from mpl_toolkits.mplot3d.proj3d import proj_transform
 from mpl_toolkits.mplot3d import axes3d, Axes3D
 from matplotlib.patches import FancyArrowPatch
-from ClassDatos import mainDatos
+from ClassDatos import Datos
 from PyQt5 import QtWidgets, QtGui, QtCore 
 from ClassWindow1 import Ui_DroneFacade
 from geopy.distance import geodesic
@@ -25,14 +24,13 @@ from geopy.distance import geodesic
 class mywindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(mywindow, self).__init__()
-        self.datos = mainDatos()
         self.ui = Ui_DroneFacade()
         self.ui.setupUi(self)
-        info_configuracion = mainDatos()
-        self.calibracionCamara = (info_configuracion.camara_id, info_configuracion.camara_fx, info_configuracion.camara_fy, info_configuracion.camara_cx, 
-            info_configuracion.camara_cy, info_configuracion.camara_k1, info_configuracion.camara_k2, info_configuracion.camara_cv_h, info_configuracion.camara_cv_v)
+        self.datos_obj = Datos()
+        self.calibracionCamara = (self.datos_obj.camara_id, self.datos_obj.camara_fx, self.datos_obj.camara_fy, self.datos_obj.camara_cx, 
+            self.datos_obj.camara_cy, self.datos_obj.camara_k1, self.datos_obj.camara_k2, self.datos_obj.camara_cv_h, self.datos_obj.camara_cv_v)
         self.parametrosCamara()
-        self.departamento = self.datos.departamento
+        self.departamento = self.datos_obj.departamento
 
 
         #Display buttons
@@ -72,8 +70,6 @@ class mywindow(QtWidgets.QMainWindow):
             self.ui.confcomboDepartamento.addItem(self.departamento[index])
         self.ui.confcomboDepartamento.currentIndexChanged.connect(self.comboMunicipios)
 
-        self.hour = [1,2,3,4,5,6,7,8,9,10]    
-        self.temperature = [30,32,34,32,33,31,29,32,35,45]
         self.wp_entrada = []
         self.wp_trayectoria = []
         self.ui.confimportarWaypoints.clicked.connect(self.cargarWaypoint)
@@ -84,7 +80,7 @@ class mywindow(QtWidgets.QMainWindow):
 
         self.flag_validacion = False
         self.reg_exp_1 = "^[a-z-A-Z_0-9áéíóúñÑ]+|([a-z-A-Z_0-9áéíóúñÑ]+\s[a-z-A-Z_0-9áéíóúñÑ]+)+"
-        self.reg_exp_2 = '^[(a-z0-9.)]+@[(a-z0-9)]+\.[(a-z)]{2,15}$'
+        self.reg_exp_2 = '^[(a-z0-9.)]+@[(a-z0-9)]+\.[(a-z.)]{2,15}$'
         self.ui.confnombreMision.textChanged.connect(self.chequeo_datos)
         self.ui.confnombreUsuario.textChanged.connect(self.chequeo_datos)
         self.ui.confnombreFachada.textChanged.connect(self.chequeo_datos)
@@ -103,7 +99,8 @@ class mywindow(QtWidgets.QMainWindow):
         self.p1_telemetria.setLabel('left','Magnitud', units='?')
         self.p1_telemetria.setLabel('bottom', 'Muestra', units='n')
         self.ui.ejecucionButton.clicked.connect(self.cargarConfiguracion)
-        self.ui.ejecttrayectoriaPlot.setBackground(background='#faf9fa')
+        self.ui.ejecttrayectoriaPlot.canvas.ax.set_facecolor('#faf9fa')
+        self.ui.ejecttrayectoriaPlot.canvas.ax.mouse_init(rotate_btn=1, zoom_btn=3)
 
 
         #Ventana de Procesamiento
@@ -122,6 +119,7 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.procPreview.setBackground(background='#faf9fa')
         self.p1_inputView.hideAxis('left')
         self.p1_inputView.hideAxis('bottom')
+        self.p1_inputView.setAspectLocked()
 
         self.ui.procPreviewSiguiente.clicked.connect(self.previewSig)
         self.ui.procPreviewPrevio.clicked.connect(self.previewPrev)
@@ -138,11 +136,13 @@ class mywindow(QtWidgets.QMainWindow):
         self.p1_imageView.hideAxis('left')
         self.p1_imageView.hideAxis('bottom')
         self.p1_imageView.vb.setMouseEnabled(y=False,x=False)
+        self.p1_imageView.setAspectLocked()
         self.ui.procimageView.nextRow()
         self.p2_imageView = self.ui.procimageView.addPlot(colspan=2)
-        self.p2_imageView.vb.setMouseEnabled(y=False,x=False)
         self.p2_imageView.hideAxis('left')
         self.p2_imageView.hideAxis('bottom')
+        self.p2_imageView.setAspectLocked()
+        self.p2_imageView.vb.setMouseEnabled(y=False,x=False)
         self.ui.procimageView.removeItem(self.p2_imageView) 
        
         # Custom ROI for selecting an self.image_out region
@@ -182,6 +182,7 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.area1.setCurrentIndex(2)
         self.ui.configuracionLabel.setDisabled(True)
         self.ui.ejecucionLabel.setEnabled(True) 
+        self.ui.ejecttrayectoriaPlot.canvas.draw()
 
     def display_4(self):
         self.ui.area1.setCurrentIndex(3)
@@ -233,9 +234,9 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.confcomboMunicipio.clear()
         self.ui.confcomboMunicipio.addItem("Municipio")
         dep = self.ui.confcomboDepartamento.currentText()
-        self.datos.buscarMunicipios(dep)
-        for index in range (len(self.datos.municipios)):
-            self.ui.confcomboMunicipio.addItem(self.datos.municipios[index])
+        self.datos_obj.buscarMunicipios(dep)
+        for index in range (len(self.datos_obj.municipios)):
+            self.ui.confcomboMunicipio.addItem(self.datos_obj.municipios[index])
 
     def cargarWaypoint(self):
         filename = QtWidgets.QFileDialog.getOpenFileName(self, 'Cargar Waypoints', '/home', filter="gpx(*.gpx)")
@@ -249,7 +250,7 @@ class mywindow(QtWidgets.QMainWindow):
             media_z = media_z['ele']
 
             self.ui.conftrayectoriaplot.canvas.ax.cla()
-            #self.ui.conftrayectoriaplot.canvas.ax.set_zlim(media_z*0.9,media_z*1.1)
+            self.ui.conftrayectoriaplot.canvas.ax.set_zlim(media_z*0.9,media_z*1.1)
             self.ui.conftrayectoriaplot.canvas.ax.scatter(wp_entrada_xdata, wp_entrada_ydata, wp_entrada_zdata, s = 50, c = 'navy', label = 'Wpt entrada', marker = '.')
             self.ui.conftrayectoriaplot.canvas.ax.legend(loc='lower left', ncol=2, borderaxespad=0.)
             self.ui.conftrayectoriaplot.canvas.draw()
@@ -265,8 +266,8 @@ class mywindow(QtWidgets.QMainWindow):
         trayectoria_zdata = self.wp_trayectoria['ele'].tolist()
         self.ui.conftrayectoriaplot.canvas.ax.cla()
         ax = self.ui.conftrayectoriaplot.canvas.ax
-        media_z = self.wp_trayectoria.mean(axis=0)
-        media_z = media_z['ele']
+        #media_z = self.wp_trayectoria.mean(axis=0)
+        #media_z = media_z['ele']
         ax.scatter(trayectoria_xdata, trayectoria_ydata, trayectoria_zdata, s= 50, c='darkcyan',label = 'Wpt trayectoria', marker = 'd')
         ax.legend(loc='lower left', ncol=2, borderaxespad=0.)
         inicio = True
@@ -280,7 +281,7 @@ class mywindow(QtWidgets.QMainWindow):
             dx,dy,dz= row[3]-row_inicio[3],row[2]-row_inicio[2],row[4]-row_inicio[4]
             ax.arrow3D(self,row_inicio[3],row_inicio[2],row_inicio[4],
                 dx,dy,dz,
-                mutation_scale=10,
+                mutation_scale=18,
                 arrowstyle="-|>",
                 linestyle='dashed',
                 color = 'darkcyan')
@@ -296,12 +297,8 @@ class mywindow(QtWidgets.QMainWindow):
         factor_tiempo = tiempo_vuelo//autonomia
         self.ui.confdescripcionTrayectoria.append("Tiempo estimado de vuelo: "+str(round(tiempo_vuelo))+" min")
         self.ui.confdescripcionTrayectoria.append("Recambio de bateria: "+str(factor_tiempo)[:1])
-
-
         if(factor_tiempo>=1): self.cambio_bateria(factor_tiempo)
-        else:
-            print("ok")
-
+        
     def _arrow3D(self, ax, x, y, z, dx, dy, dz, *args, **kwargs):
         '''Add an 3d arrow to an `Axes3D` instance.'''
 
@@ -383,7 +380,7 @@ class mywindow(QtWidgets.QMainWindow):
             recambio_zdata.append(entrada_zdata[row_index]+1.5)
             
         ax = self.ui.conftrayectoriaplot.canvas.ax    
-        ax.scatter(recambio_xdata, recambio_ydata, recambio_zdata, s= 50, c='yellow',label = 'Cambio Bateria', marker = 'o')
+        ax.scatter(recambio_xdata, recambio_ydata, recambio_zdata, s= 150, c='yellow',label = 'Cambio Bateria', marker = 'o')
         ax.legend(loc='lower left', ncol=2, borderaxespad=0.)
         self.ui.conftrayectoriaplot.canvas.draw()
 
@@ -408,7 +405,7 @@ class mywindow(QtWidgets.QMainWindow):
             self.flag_validacion = True
 
     def cargarConfiguracion(self):
-        set_info_user = mainDatos()
+        set_info_user = self.datos_obj
         if(self.flag_validacion):
             try:
                 set_info_user.departamento_seleccionado = self.ui.confcomboDepartamento.currentText()
@@ -436,13 +433,14 @@ class mywindow(QtWidgets.QMainWindow):
                 print(e)
             else:
                 self.dialog_conf_done()
+                self.ui.ejecttrayectoriaPlot.canvas.ax = self.ui.conftrayectoriaplot.canvas.ax
                 self.display_3()            
         else:
             self.dialog_conf_error()
 
     def dialog_conf_error(self):
         dlg = QtWidgets.QMessageBox()
-        dlg.setText("Los datos suministrados por el usuario son incorrectos.")
+        dlg.setText("Los datos_obj suministrados por el usuario son incorrectos.")
         dlg.setWindowTitle("Upss! Datos invalidos")
         pixmap = QtGui.QPixmap("Imagenes/PackIconos/ejecucion/ic_highlight_off.png")
         pixmap.setDevicePixelRatio(2.0)
@@ -638,12 +636,12 @@ class mywindow(QtWidgets.QMainWindow):
         self.p1_imageView.clear()
         self.image_out_size = image_out.shape
         self.image_out = cv2.cvtColor(image_out, cv2.COLOR_BGR2RGB)
-        self.image_view = pg.ImageItem()
+        self.image_view = pg.ImageItem(autoScale= False,autoRange=False)
         self.p1_imageView.addItem(self.image_view)
-        self.image_view.setImage(self.image_out)
+        self.image_view.setImage(self.image_out, autoScale=False)
         self.image_view.translate(0,self.image_out_size[0])
         self.image_view.rotate(270)
-        self.p1_imageView.autoRange()
+        self.p1_imageView.autoRange(False)
 
     def interaccion(self):
         if(self.ui.procHabilitarInteraccion.isChecked()):

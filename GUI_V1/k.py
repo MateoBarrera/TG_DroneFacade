@@ -1,16 +1,27 @@
-import pandas as pd
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as Canvas
+from MySQL_Connector import MySQL
+from ClassDatos import Datos
+from datetime import date
+import time
+import logging
+import cv2
+from imutils import paths
+import numpy as np
 
-Canvas.
+conexion = MySQL()
+dato_obj = Datos()
+dato_obj.fecha = date.today()
+status, err = conexion.conectar()
+image_input = cv2.imread("imagen_1.png", cv2.IMREAD_COLOR)
+image = cv2.cvtColor(image_input, cv2.COLOR_BGR2RGB)
+#status, err = conexion.set_mision(dato_obj)
+status, err = conexion.set_resutados(image,dato_obj)
+resultados = conexion.get_resultados()
+if not status: print(err)
+print(resultados)
+cv2.imshow('Imagen',resultados[1])
+cv2.waitKey()
+time.sleep(3)
 
-df = pd.DataFrame(columns=['wpt','lat','lon','ele'])
-df = df.append({'wpt': "1", 'lat': 2, 'lon':2, 'ele':0},ignore_index=True)
-df = df.append({'wpt': "1", 'lat': 2, 'lon':2, 'ele':0},ignore_index=True)
-df = df.append({'wpt': "3", 'lat': 2, 'lon':2, 'ele':0},ignore_index=True)
 
-print(df)
-print(df.index)
-df.set_index('wpt',inplace=True)
-print(df)
-data= df[["lat"]]
-print(data.values.tolist())
+status, err = conexion.desconectar()
+if not status: print(err)
