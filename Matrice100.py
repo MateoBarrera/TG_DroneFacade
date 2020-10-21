@@ -21,16 +21,16 @@ class Matrice100Services:
     def getSDKControl(self):
         rospy.wait_for_service('dji_sdk/sdk_control_authority')
         try:
-            GetControl = rospy.ServiceProxy('dji_sdk/sdk_control_authority', dji_sdk.srv.con)
-            GetControl(1)
+            Control = rospy.ServiceProxy('dji_sdk/sdk_control_authority', dji_sdk.srv.con)
+            Control(1)
         except rospy.ServiceException as e:
             rospy.logerr("Service Control Authority call failed: %s"%e)
 
-    def releaceSDKControl(self):
+    def releaseSDKControl(self):
         rospy.wait_for_service('dji_sdk/sdk_control_authority')
         try:
-            GetControl = rospy.ServiceProxy('dji_sdk/sdk_control_authority', dji_sdk.srv.con)
-            GetControl(0)
+            Control = rospy.ServiceProxy('dji_sdk/sdk_control_authority', dji_sdk.srv.con)
+            Control(0)
         except rospy.ServiceException as e:
             rospy.logerr("Service Control Authority call failed: %s"%e)
 
@@ -229,15 +229,15 @@ def main():
 
     # ROS main loop
     while not rospy.is_shutdown():
-        rospy.loginfo("arm")
-
+        rospy.loginfo("get Control")
+        service.getSDKControl()
         rospy.loginfo("takeoff")
         service.takeoff()
         time.sleep(5)
         rospy.loginfo("landing")
         service.landing()
-
-        service.setDisarm()
+        rospy.loginfo("realse Control")
+        service.releaseSDKControl()
 
         rate.sleep()
 
