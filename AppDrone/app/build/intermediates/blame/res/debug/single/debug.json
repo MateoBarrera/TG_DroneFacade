@@ -1,0 +1,922 @@
+[
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_dron_logo_2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/dron_logo_2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_grafico3_v1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/grafico3_v1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_texto_info5.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/texto_info5.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_line_bar.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/line_bar.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_texto_info3.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/texto_info3.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_distancia_aproximada.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/distancia_aproximada.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_hint_text_3_light.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/hint_text_3_light.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_texto_info2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/texto_info2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_grafico4.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/grafico4.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_icono.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/icono.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_texto_distancia.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/texto_distancia.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_ui_app_bar_light.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/ui_app_bar_light.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_psi.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/psi.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_grafico2_v3.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/grafico2_v3.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_dron_facade.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/dron_facade.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_distancia_aproximada.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/distancia_aproximada.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_grafico2_v3.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/grafico2_v3.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_grafico4.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/grafico4.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_dron_logo.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/dron_logo.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_dron_facade.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/dron_facade.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_hint_text_3_light.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/hint_text_3_light.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_texto_info1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/texto_info1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/layout-v26_distancia_emergente.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/layout-v26/distancia_emergente.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ui_app_bar_light.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/ui_app_bar_light.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_round_btn_earse.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/round_btn_earse.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_texto_distancia.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/texto_distancia.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_grafico_v2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/grafico_v2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_grafico3_v1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/grafico3_v1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_univalle.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/univalle.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_texto_info5.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/texto_info5.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/layout_activity_splash.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/layout/activity_splash.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_dron_facade_mini.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/dron_facade_mini.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_grafico_v2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/grafico_v2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_grafico3_v1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/grafico3_v1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_line_bar.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/line_bar.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_hint_text_3_light.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/hint_text_3_light.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_psi.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/psi.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_dron_facade.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/dron_facade.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_dron_logo_mini.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/dron_logo_mini.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_texto_info4.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/texto_info4.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_nombre_de_la_mision.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/nombre_de_la_mision.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_indicaciones_de_uso.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/indicaciones_de_uso.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_distancia_aproximada.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/distancia_aproximada.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_round_btn_mas.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/round_btn_mas.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_grafico5.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/grafico5.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_texto_info4.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/texto_info4.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_texto_info3.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/texto_info3.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_dron_logo.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/dron_logo.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_texto_info2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/texto_info2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_texto_distancia.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/texto_distancia.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_round_btn_next.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/round_btn_next.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_dron_logo_2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/dron_logo_2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_settings.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/ic_settings.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/layout-v26_activity_info_1.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/layout-v26/activity_info_1.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_round_btn_earse.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/round_btn_earse.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_grafico_v2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/grafico_v2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_grafico3_v1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/grafico3_v1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_texto_info5.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/texto_info5.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_dron_logo_mini.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/dron_logo_mini.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_line_bar.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/line_bar.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_hint_text_3_light.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/hint_text_3_light.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_line_bar.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/line_bar.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_texto_info1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/texto_info1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_texto_info1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/texto_info1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_round_btn_done.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/round_btn_done.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_texto_distancia.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/texto_distancia.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_nuevo_registro_de_coordenadas.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/nuevo_registro_de_coordenadas.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_texto_info3.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/texto_info3.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_dron_logo_mini.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/dron_logo_mini.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/layout-v26_activity_info_2.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/layout-v26/activity_info_2.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_nombre_de_la_mision.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/nombre_de_la_mision.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_round_btn_earse.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/round_btn_earse.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_nuevo_registro_de_coordenadas.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/nuevo_registro_de_coordenadas.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_grafico_v2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/grafico_v2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_round_btn_save.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/round_btn_save.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_dron_facade.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/dron_facade.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_texto_info1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/texto_info1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_univalle.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/univalle.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_distancia_aproximada.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/distancia_aproximada.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_dron_logo.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/dron_logo.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_grafico2_v3.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/grafico2_v3.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_texto_info2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/texto_info2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_indicaciones_de_uso.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/indicaciones_de_uso.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_line_bar.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/line_bar.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/layout-v26_activity_info_3.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/layout-v26/activity_info_3.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_texto_info5.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/texto_info5.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_hint_text_3_light.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/hint_text_3_light.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_round_btn_done.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/round_btn_done.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_settings.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/ic_settings.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_nombre_de_la_mision.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/nombre_de_la_mision.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_dron_facade_mini.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/dron_facade_mini.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_settings.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/ic_settings.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_round_btn_earse.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/round_btn_earse.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_texto_info2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/texto_info2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_nombre_de_la_mision.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/nombre_de_la_mision.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_texto_info4.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/texto_info4.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_dron_logo.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/dron_logo.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_dron_logo_mini.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/dron_logo_mini.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_dron_logo_1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/dron_logo_1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_grafico5.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/grafico5.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_nuevo_registro_de_coordenadas.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/nuevo_registro_de_coordenadas.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_round_btn_earse.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/round_btn_earse.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_univalle.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/univalle.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/layout-v26_activity_location.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/layout-v26/activity_location.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_ui_app_bar_light.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/ui_app_bar_light.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_dron_icono_fachada.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/dron_icono_fachada.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_univalle.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/univalle.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_grafico5.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/grafico5.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_dron_logo_1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/dron_logo_1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_texto_info4.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/texto_info4.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_dron_facade.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/dron_facade.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_dron_logo_mini.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/dron_logo_mini.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_round_btn_save.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/round_btn_save.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_texto_info4.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/texto_info4.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_dron_logo_mini.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/dron_logo_mini.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_dron_logo_2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/dron_logo_2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_psi.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/psi.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_round_btn_save.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/round_btn_save.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_round_btn_mas.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/round_btn_mas.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_dron_logo_2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/dron_logo_2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_round_btn_next.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/round_btn_next.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/layout-v26_activity_nuevo_registro.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/layout-v26/activity_nuevo_registro.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_texto_info5.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/texto_info5.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_settings.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/ic_settings.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_dron_logo_1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/dron_logo_1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_round_btn_next.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/round_btn_next.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_nuevo_registro_de_coordenadas.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/nuevo_registro_de_coordenadas.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_ui_app_bar_light.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/ui_app_bar_light.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_distancia_aproximada.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/distancia_aproximada.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_nombre_de_la_mision.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/nombre_de_la_mision.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_line_bar.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/line_bar.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_dron_logo_1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/dron_logo_1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_grafico5.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/grafico5.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/layout-v26_activity_info_4.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/layout-v26/activity_info_4.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_dron_logo_1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/dron_logo_1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_round_btn_mas.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/round_btn_mas.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_grafico2_v3.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/grafico2_v3.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_dron_facade_mini.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/dron_facade_mini.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_univalle.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/univalle.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_texto_info5.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/texto_info5.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_grafico3_v1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/grafico3_v1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_univalle.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/univalle.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_round_btn_mas.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/round_btn_mas.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_dron_icono_fachada.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/dron_icono_fachada.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_dron_facade.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/dron_facade.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_settings.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/ic_settings.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_dron_icono_fachada.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/dron_icono_fachada.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_dron_logo_2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/dron_logo_2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_round_btn_save.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/round_btn_save.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_round_btn_done.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/round_btn_done.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_texto_info3.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/texto_info3.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_round_btn_next.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/round_btn_next.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_dron_logo_1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/dron_logo_1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_dron_icono_fachada.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/dron_icono_fachada.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_grafico3_v1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/grafico3_v1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_texto_info2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/texto_info2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_grafico5.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/grafico5.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_icon_white.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/icon_white.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_settings.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/ic_settings.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_dron_logo.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/dron_logo.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_round_btn_next.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/round_btn_next.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_psi.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/psi.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_round_btn_mas.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/round_btn_mas.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_dron_facade_mini.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/dron_facade_mini.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_fondo_1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/fondo_1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_grafico2_v3.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/grafico2_v3.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_grafico5.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/grafico5.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_round_btn_done.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/round_btn_done.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_dron_logo.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/dron_logo.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable_ic_launcher_background.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_round_btn_save.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/round_btn_save.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_dron_logo_2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/dron_logo_2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_grafico2_v3.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/grafico2_v3.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_indicaciones_de_uso.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/indicaciones_de_uso.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_round_btn_mas.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/round_btn_mas.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_round_btn_earse.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/round_btn_earse.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/layout-v26_recyler_row.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/layout-v26/recyler_row.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_texto_info2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/texto_info2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_dron_facade_mini.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/dron_facade_mini.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_hint_text_3_light.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/hint_text_3_light.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/transition_explode.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/transition/explode.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_grafico4.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/grafico4.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_psi.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/psi.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_nombre_de_la_mision.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/nombre_de_la_mision.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ui_app_bar_light.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/ui_app_bar_light.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_indicaciones_de_uso.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/indicaciones_de_uso.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/layout-v26_activity_main.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/layout-v26/activity_main.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_indicaciones_de_uso.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/indicaciones_de_uso.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_texto_info1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/texto_info1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_dron_facade_mini.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/dron_facade_mini.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_distancia_aproximada.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/distancia_aproximada.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_psi.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/psi.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_grafico4.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/grafico4.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_round_btn_done.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/round_btn_done.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-hdpi_round_btn_done.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-hdpi/round_btn_done.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/transition_change_image_transform.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/transition/change_image_transform.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_texto_distancia.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/texto_distancia.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_texto_distancia.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/texto_distancia.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_texto_info4.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/texto_info4.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_nuevo_registro_de_coordenadas.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/nuevo_registro_de_coordenadas.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/layout-v26_capturar_coordenadas.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/layout-v26/capturar_coordenadas.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_texto_info3.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/texto_info3.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_texto_info1.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/texto_info1.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_round_btn_save.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/round_btn_save.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_nuevo_registro_de_coordenadas.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/nuevo_registro_de_coordenadas.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_dron_icono_fachada.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/dron_icono_fachada.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/layout-v26_activity_info_5.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/layout-v26/activity_info_5.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_grafico_v2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/grafico_v2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-ldpi_grafico4.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-ldpi/grafico4.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_round_btn_next.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/round_btn_next.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_texto_info3.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/texto_info3.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_ui_app_bar_light.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/ui_app_bar_light.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxhdpi_dron_icono_fachada.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxhdpi/dron_icono_fachada.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/layout-v26_activity_distancia.xml.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/layout-v26/activity_distancia.xml"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-mdpi_indicaciones_de_uso.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-mdpi/indicaciones_de_uso.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xhdpi_grafico_v2.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xhdpi/grafico_v2.png"
+    },
+    {
+        "merged": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_grafico4.png.flat",
+        "source": "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/AppDrone/app/src/main/res/drawable-xxxhdpi/grafico4.png"
+    }
+]
