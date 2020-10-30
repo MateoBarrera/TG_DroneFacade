@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # ROS python API
 import rospy
@@ -11,25 +11,28 @@ from geometry_msgs.msg import PointStamped
 # import all mavros messages and services
 from dji_sdk.msg import *
 from dji_sdk.srv import *
+import pandas as pd
 
 #Class ROS services
 class Matrice100Services:
     def __init__(self):
-        self.MissionTask = MissionWaypointTask()
+        self.MissionTask = []
         pass
 
     def getSDKControl(self):
         rospy.wait_for_service('dji_sdk/sdk_control_authority')
         try:
-            Control = rospy.ServiceProxy('dji_sdk/sdk_control_authority', dji_sdk.srv.con)
+            Control = rospy.ServiceProxy('dji_sdk/sdk_control_authority', dji_sdk.srv.SDKControlAuthority)
             Control(1)
+            return True
         except rospy.ServiceException as e:
             rospy.logerr("Service Control Authority call failed: %s"%e)
+            return False
 
     def releaseSDKControl(self):
         rospy.wait_for_service('dji_sdk/sdk_control_authority')
         try:
-            Control = rospy.ServiceProxy('dji_sdk/sdk_control_authority', dji_sdk.srv.con)
+            Control = rospy.ServiceProxy('dji_sdk/sdk_control_authority', dji_sdk.srv.SDKControlAuthority)
             Control(0)
         except rospy.ServiceException as e:
             rospy.logerr("Service Control Authority call failed: %s"%e)
@@ -51,9 +54,8 @@ class Matrice100Services:
             rospy.logerr("Service disarming call failed: %s"%e)
 
     def setLocalPosition(self):
-        rospy.wait_for_service('dji_sdk/set_local_pos_ref')
         try:
-            armService = rospy.ServiceProxy('dji_sdk/set_local_pos_ref', dji_sdk.srv.SetLocalPosRef)
+            rospy.wait_for_service('dji_sdk/set_local_pos_ref')
             return True
         except rospy.ServiceException as e:
             rospy.logerr("Service arming call failed: %s"%e) 
@@ -74,6 +76,13 @@ class Matrice100Services:
             TaskService(6)
         except rospy.ServiceException as e:
             rospy.logerr("Service Landing call failed: %s"%e)
+
+    def set_local_pos(self):
+        rospy.wait_for_service('/dji_sdk/set_local_pos_ref')
+        try:
+            LocalPos = rospy.ServiceProxy('/dji_sdk/set_local_pos_ref', dji_sdk.srv.SetLocalPosRef)
+        except rospy.ServiceException as e:
+            rospy.logerr("Service set Local Pos call failed: %s"%e)
 
     def goHome(self):
         rospy.wait_for_service('dji_sdk/drone_task_control')
@@ -122,6 +131,49 @@ class Matrice100Services:
             TaskService(self.MissionTask)
         except rospy.ServiceException as e:
             rospy.logerr("Service Upload WP Mission call failed: %s"%e)
+    
+    def waypoint_mission(self, coord):
+        #Configuración de la Misión
+        MissionTask = MissionWaypointTask()
+        MissionTask.velocity_range = 10
+        MissionTask.idle_velocity = 5
+        #Acción después del final: 0 Sin acción 1 Regreso al origen 2 Aterrizaje automático 3 Regreso a un punto determinado 4 Modo sin fin, no salir
+        MissionTask.action_on_finish = 1 
+        #Veces que se ejecuta 
+        MissionTask.mission_exec_times = 1 
+        # Dirección: 0 modo automático (apuntando al siguiente waypoint) 1 bloquear el valor inicial 2 controlar con el mando a distancia 3 adoptar el ángulo de guiñada del waypoint
+        MissionTask.yaw_mode = 1  
+        MissionTask.trace_mode = 0 
+        # Desconeción del remoto 
+        MissionTask.action_on_rc_lost = 1 
+        MissionTask.gimbal_pitch_mode = 0
+        wps = []
+        for coordinate in coord.itertuples():
+            wp = self.set_waypoints(coordinate[1],coordinate[2],coordinate[3])
+            wps.append(wp)
+            
+        print("done")
+        MissionTask.mission_waypoint = wps
+        self.MissionTask = MissionTask
+
+    def set_waypoints(self, latitude, longitude, altitude):
+        hovertime = 5
+        wp = MissionWaypoint()
+        wp.latitude = latitude
+        wp.longitude = longitude
+        wp.altitude = altitude
+        wp.damping_distance = 0 
+        wp.target_yaw = 0  
+        wp.target_gimbal_pitch = 0
+        wp.turn_mode = 0  
+        wp.has_action = 1
+        wp.action_time_limit = 5000
+        wp.waypoint_action.action_repeat = 1
+        '''
+        wp.waypoint_action.command_list = "\0"*16
+        wp.waypoint_action.command_parameter[0] = hovertime * 1000 '''
+
+        return wp
 
     def getInfoMission(self):
         rospy.wait_for_service('dji_sdk/mission_waypoint_getInfo')
@@ -161,6 +213,8 @@ class Matrice100Topics:
         self.imu_velocity = None
         self.imu_acceleration = None
         self.local = None
+        self.flight_status = None
+        self.flightStatus()
         pass
 
     def batteryState(self):
@@ -205,9 +259,20 @@ class Matrice100Topics:
 
     def localPosition(self):
         try:
-            sub = rospy.Subscriber('dji_sdk/local_position', PointStamped, self.localPositionCB)  
+            sub = rospy.wait_for_message('dji_sdk/local_position', PointStamped)
+            return sub  
         except rospy.ServiceException as e:
             print("Failed to subscribe GPS position: %s"%e)
+            return None
+
+    def flightStatus(self):
+        try:
+            sub = rospy.Subscriber('/dji_sdk/flight_status', UInt8, self.flightCB)
+        except rospy.SubscriberExeption as e:
+            print("Failed to subscribe GPS position: %s"%e)
+
+    def flightCB(self, data):
+        self.flight_status = data
 
     def localPositionCB(self, data):
         self.local = data.Point
@@ -219,27 +284,55 @@ def main():
     ros_node = rospy.init_node('setpoints_node', anonymous=True)
 
     # flight mode object
-    
+     
     service = Matrice100Services()
     topic = Matrice100Topics()
     # ROS loop rate, [Hz]
-    rate = rospy.Rate(20.0)
-
-
-
+    rate = rospy.Rate(20.0) 
+ 
+    status = service.setLocalPosition()
+    if status:
+        position = rospy.wait_for_message('dji_sdk/gps_position', NavSatFix)
+    print(position.latitude,position.longitude,position.altitude)
+    
+    coordenadas = pd.DataFrame(columns=['latitude','longitude','altitude'],)
+    coordenadas = coordenadas.append({'latitude': position.latitude, 'longitude': position.longitude, 'altitude': position.altitude+24 },ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': position.latitude+0.0002, 'longitude': position.longitude, 'altitude': position.altitude+24 },ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': position.latitude+0.0002, 'longitude': position.longitude, 'altitude': position.altitude+18},ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': position.latitude, 'longitude': position.longitude, 'altitude': position.altitude+18 },ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': position.latitude, 'longitude': position.longitude, 'altitude': position.altitude+12},ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': position.latitude+0.0002, 'longitude': position.longitude, 'altitude': position.altitude+12 },ignore_index=True) 
+    
+    print(coordenadas)
+    
     # ROS main loop
-    while not rospy.is_shutdown():
-        rospy.loginfo("get Control")
-        service.getSDKControl()
-        rospy.loginfo("takeoff")
-        service.takeoff()
-        time.sleep(5)
-        rospy.loginfo("landing")
-        service.landing()
-        rospy.loginfo("realse Control")
-        service.releaseSDKControl()
+    rospy.loginfo("Generando misión")
+    service.waypoint_mission(coordenadas)
+    service.uploadMission()
+    rospy.loginfo("Carga Correcta!")
 
-        rate.sleep()
+    rospy.loginfo("get Control")
+    status = service.getSDKControl()
+    if status:
+        while True: 
+            print(topic.flight_status)
+            if topic.flight_status == 3:
+                
+                break 
+        rospy.loginfo("start Mission")
+        try:
+            service.startMission()
+        except keyboardInterrupt as e:
+            pass
+        else:
+            rospy.loginfo("landing")
+            service.landing()
+            while True: 
+                if topic.flight_status == 5:
+                    break 
+            rospy.loginfo("realse Control")
+            service.releaseSDKControl()
+    
 
 
 if __name__ == '__main__':
