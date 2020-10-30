@@ -153,12 +153,15 @@ class mywindow(QtWidgets.QMainWindow):
         self.roi.setZValue(10)
         self.roi.sigRegionChanged.connect(self.actualizarROI)
 
-        self.image_out = cv2.imread("imagen_1.png", cv2.IMREAD_COLOR)
+        self.image_out = cv2.imread("GUI_V1/imagen_1.png", cv2.IMREAD_COLOR)
         self.visualizarImageOut(self.image_out)
 
         self.ui.procGenerarMosaico.clicked.connect(self.stitching)
         
         setattr(Axes3D,'arrow3D',self._arrow3D)
+
+        self.ui.resultadosButton_2.clicked.connect(self.display_5)
+        self.ui.pushButton_7.clicked.connect(self.display_6)
 
 
 
@@ -191,8 +194,12 @@ class mywindow(QtWidgets.QMainWindow):
                
     def display_5(self):
         self.ui.area1.setCurrentIndex(4)
+        self.ui.inicioLabel.setDisabled(True)
         self.ui.procesamientoLabel.setDisabled(True)
         self.ui.resultadosLabel.setEnabled(True)
+
+    def display_6(self):
+        self.ui.area1.setCurrentIndex(5)
 
 
     ################ CONFIGURACIÓN ################

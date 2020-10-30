@@ -3,7 +3,13 @@
     <file>Imagenes/PSI.svg</file>
   </qresource>
   <qresource prefix="resultados">
+    <file>Imagenes/PackIconos/resultados/ic_archive.png</file>
+    <file>Imagenes/PackIconos/resultados/ic_cloud_download.png</file>
+    <file>Imagenes/PackIconos/resultados/ic_file_upload.png</file>
+    <file>Imagenes/PackIconos/resultados/ic_note_add.png</file>
+    <file>Imagenes/PackIconos/resultados/ic_pageview.png</file>
     <file>Imagenes/PackIconos/resultados/ic_art_track.png</file>
+    <file>Imagenes/PackIconos/resultados/art_track.png</file>
   </qresource>
   <qresource prefix="ejecucion">
     <file>Imagenes/PackIconos/ejecucion/ic_slow_motion_video._white.png</file>

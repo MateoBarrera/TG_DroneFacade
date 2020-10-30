@@ -2229,13 +2229,13 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>4</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="area1Page1">
          <layout class="QGridLayout" name="gridLayout_6">
           <item row="0" column="0">
            <layout class="QGridLayout" name="gridLayout_5">
-            <item row="16" column="2">
+            <item row="17" column="2">
              <spacer name="verticalSpacer">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -2251,7 +2251,7 @@
               </property>
              </spacer>
             </item>
-            <item row="14" column="0">
+            <item row="15" column="0">
              <spacer name="horizontalSpacer_2">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -2267,7 +2267,7 @@
               </property>
              </spacer>
             </item>
-            <item row="14" column="5">
+            <item row="15" column="5">
              <widget class="QLabel" name="PSIIcon">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -2361,7 +2361,7 @@
               </property>
              </widget>
             </item>
-            <item row="14" column="2">
+            <item row="15" column="2">
              <widget class="QLabel" name="univalleIcon">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -2427,6 +2427,26 @@
               </property>
               <property name="autoExclusive">
                <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="3">
+             <widget class="QPushButton" name="resultadosButton_2">
+              <property name="text">
+               <string>Resultados</string>
+              </property>
+              <property name="icon">
+               <iconset resource="imagenes.qrc">
+                <normaloff>:/resultados/Imagenes/PackIconos/resultados/art_track.png</normaloff>:/resultados/Imagenes/PackIconos/resultados/art_track.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>42</width>
+                <height>42</height>
+               </size>
               </property>
               <property name="flat">
                <bool>true</bool>
@@ -3666,7 +3686,7 @@
                 <enum>QTabWidget::West</enum>
                </property>
                <property name="currentIndex">
-                <number>2</number>
+                <number>1</number>
                </property>
                <widget class="QWidget" name="tab">
                 <attribute name="title">
@@ -4155,7 +4175,7 @@
                 </size>
                </property>
                <property name="value">
-                <number>24</number>
+                <number>70</number>
                </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
@@ -4720,132 +4740,6 @@
         </widget>
         <widget class="QWidget" name="area1Page5">
          <layout class="QGridLayout" name="gridLayout_24">
-          <item row="1" column="0">
-           <widget class="QGroupBox" name="groupBox_12">
-            <property name="minimumSize">
-             <size>
-              <width>300</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>Misiónes </string>
-            </property>
-            <widget class="QLabel" name="label_38">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>45</y>
-               <width>40</width>
-               <height>40</height>
-              </rect>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>40</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>TextLabel</string>
-             </property>
-            </widget>
-            <widget class="QLabel" name="label_39">
-             <property name="geometry">
-              <rect>
-               <x>65</x>
-               <y>55</y>
-               <width>146</width>
-               <height>19</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Buscar por</string>
-             </property>
-            </widget>
-            <widget class="QLabel" name="label_40">
-             <property name="geometry">
-              <rect>
-               <x>15</x>
-               <y>255</y>
-               <width>96</width>
-               <height>19</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Seleccionar</string>
-             </property>
-            </widget>
-            <widget class="QComboBox" name="comboBox_3">
-             <property name="geometry">
-              <rect>
-               <x>90</x>
-               <y>310</y>
-               <width>86</width>
-               <height>27</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QRadioButton" name="radioButton_2">
-             <property name="geometry">
-              <rect>
-               <x>50</x>
-               <y>85</y>
-               <width>251</width>
-               <height>25</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>departamento</string>
-             </property>
-            </widget>
-            <widget class="QRadioButton" name="radioButton_3">
-             <property name="geometry">
-              <rect>
-               <x>50</x>
-               <y>115</y>
-               <width>117</width>
-               <height>25</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>municipio</string>
-             </property>
-            </widget>
-            <widget class="QRadioButton" name="radioButton_4">
-             <property name="geometry">
-              <rect>
-               <x>50</x>
-               <y>180</y>
-               <width>146</width>
-               <height>25</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>nombre usuario</string>
-             </property>
-            </widget>
-            <widget class="QRadioButton" name="radioButton_5">
-             <property name="geometry">
-              <rect>
-               <x>50</x>
-               <y>150</y>
-               <width>141</width>
-               <height>25</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>nombre misión</string>
-             </property>
-            </widget>
-           </widget>
-          </item>
           <item row="0" column="0" colspan="2">
            <widget class="QLabel" name="label_13">
             <property name="minimumSize">
@@ -4927,9 +4821,149 @@
           </item>
           <item row="2" column="0">
            <widget class="QPushButton" name="inicioButton">
+            <property name="maximumSize">
+             <size>
+              <width>300</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="text">
              <string>Finalizar</string>
             </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QGroupBox" name="groupBox_12">
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Misiónes </string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_25">
+             <item row="0" column="1" colspan="3">
+              <widget class="QLabel" name="label_39">
+               <property name="text">
+                <string>Buscar por:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1" colspan="3">
+              <widget class="QRadioButton" name="radioButton_5">
+               <property name="text">
+                <string>nombre misión</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_41">
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="imagenes.qrc">:/resultados/Imagenes/PackIconos/resultados/ic_cloud_download.png</pixmap>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="2">
+              <spacer name="verticalSpacer_10">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="2" column="1" colspan="3">
+              <widget class="QRadioButton" name="radioButton_3">
+               <property name="text">
+                <string>municipio</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1" colspan="3">
+              <widget class="QRadioButton" name="resulDepradioButton">
+               <property name="text">
+                <string>departamento</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_38">
+               <property name="minimumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="imagenes.qrc">:/resultados/Imagenes/PackIconos/resultados/ic_pageview.png</pixmap>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1" colspan="3">
+              <widget class="QLabel" name="label_40">
+               <property name="text">
+                <string>Seleccionar</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1" colspan="3">
+              <widget class="QRadioButton" name="radioButton_4">
+               <property name="text">
+                <string>nombre usuario</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="1" colspan="3">
+              <widget class="QComboBox" name="comboBox_3"/>
+             </item>
+             <item row="10" column="0" colspan="4">
+              <widget class="QPushButton" name="pushButton_7">
+               <property name="text">
+                <string>Construir Reporte</string>
+               </property>
+               <property name="icon">
+                <iconset resource="imagenes.qrc">
+                 <normaloff>:/resultados/Imagenes/PackIconos/resultados/ic_note_add.png</normaloff>:/resultados/Imagenes/PackIconos/resultados/ic_note_add.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>32</width>
+                 <height>32</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
           <item row="1" column="1">
@@ -4941,58 +4975,36 @@
              <attribute name="title">
               <string>Información</string>
              </attribute>
-             <widget class="QGroupBox" name="groupBox_13">
-              <property name="geometry">
-               <rect>
-                <x>415</x>
-                <y>10</y>
-                <width>371</width>
-                <height>291</height>
-               </rect>
-              </property>
-              <property name="title">
-               <string>Configuración</string>
-              </property>
-             </widget>
-             <widget class="QGroupBox" name="groupBox_16">
-              <property name="geometry">
-               <rect>
-                <x>5</x>
-                <y>310</y>
-                <width>381</width>
-                <height>241</height>
-               </rect>
-              </property>
-              <property name="title">
-               <string>ejecución</string>
-              </property>
-             </widget>
-             <widget class="QGroupBox" name="groupBox_17">
-              <property name="geometry">
-               <rect>
-                <x>400</x>
-                <y>295</y>
-                <width>411</width>
-                <height>286</height>
-               </rect>
-              </property>
-              <property name="title">
-               <string>procesamiento</string>
-              </property>
-             </widget>
-             <widget class="QGroupBox" name="groupBox_18">
-              <property name="geometry">
-               <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>376</width>
-                <height>281</height>
-               </rect>
-              </property>
-              <property name="title">
-               <string>general</string>
-              </property>
-             </widget>
+             <layout class="QGridLayout" name="gridLayout_26">
+              <item row="1" column="2" colspan="2">
+               <widget class="QGroupBox" name="groupBox_17">
+                <property name="title">
+                 <string>Procesamiento</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="2">
+               <widget class="QGroupBox" name="groupBox_18">
+                <property name="title">
+                 <string>General</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2" colspan="2">
+               <widget class="QGroupBox" name="groupBox_13">
+                <property name="title">
+                 <string>Configuración</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" colspan="2">
+               <widget class="QGroupBox" name="groupBox_16">
+                <property name="title">
+                 <string>Ejecución</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
             <widget class="QWidget" name="tab_5">
              <attribute name="title">
@@ -5004,58 +5016,7 @@
          </layout>
         </widget>
         <widget class="QWidget" name="page">
-         <layout class="QGridLayout" name="gridLayout_23">
-          <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="label_37">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>18</pointsize>
-              <weight>75</weight>
-              <italic>false</italic>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>RESULTADOS</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2" rowspan="2">
-           <widget class="QGroupBox" name="groupBox_14">
-            <property name="title">
-             <string>Informe</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QGroupBox" name="groupBox_15">
-            <property name="title">
-             <string>Misiónes </string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QPushButton" name="inicioButton_2">
-            <property name="text">
-             <string>Finalizar</string>
-            </property>
-           </widget>
-          </item>
+         <layout class="QGridLayout" name="gridLayout_80">
           <item row="2" column="1" colspan="2">
            <layout class="QHBoxLayout" name="horizontalLayout_5">
             <item>
@@ -5105,7 +5066,358 @@
             </item>
            </layout>
           </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QWidget" name="widget_2" native="true">
+            <layout class="QGridLayout" name="gridLayout_81">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item row="1" column="0" rowspan="2">
+              <widget class="QGroupBox" name="groupBox_63">
+               <property name="minimumSize">
+                <size>
+                 <width>300</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="title">
+                <string>Misiónes </string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_78">
+                <item row="0" column="1" colspan="3">
+                 <widget class="QLabel" name="label_136">
+                  <property name="text">
+                   <string>Buscar por:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1" colspan="3">
+                 <widget class="QRadioButton" name="radioButton_32">
+                  <property name="text">
+                   <string>nombre misión</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0">
+                 <widget class="QLabel" name="label_137">
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="imagenes.qrc">:/resultados/Imagenes/PackIconos/resultados/ic_cloud_download.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="9" column="2">
+                 <spacer name="verticalSpacer_35">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="2" column="1" colspan="3">
+                 <widget class="QRadioButton" name="radioButton_33">
+                  <property name="text">
+                   <string>municipio</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1" colspan="3">
+                 <widget class="QRadioButton" name="resulDepradioButton_2">
+                  <property name="text">
+                   <string>departamento</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_138">
+                  <property name="minimumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="imagenes.qrc">:/resultados/Imagenes/PackIconos/resultados/ic_pageview.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="1" colspan="3">
+                 <widget class="QLabel" name="label_139">
+                  <property name="text">
+                   <string>Seleccionar</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1" colspan="3">
+                 <widget class="QRadioButton" name="radioButton_35">
+                  <property name="text">
+                   <string>nombre usuario</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="1" colspan="3">
+                 <widget class="QComboBox" name="comboBox_11"/>
+                </item>
+                <item row="10" column="0" colspan="4">
+                 <widget class="QPushButton" name="pushButton_8">
+                  <property name="text">
+                   <string>Construir Reporte</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="imagenes.qrc">
+                    <normaloff>:/resultados/Imagenes/PackIconos/resultados/ic_note_add.png</normaloff>:/resultados/Imagenes/PackIconos/resultados/ic_note_add.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>32</width>
+                    <height>32</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="9" column="0" colspan="2">
+                 <widget class="QWidget" name="widget" native="true"/>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="1" rowspan="2">
+              <widget class="QTabWidget" name="tabWidget_7">
+               <property name="currentIndex">
+                <number>0</number>
+               </property>
+               <widget class="QWidget" name="tab_22">
+                <attribute name="title">
+                 <string>Información</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_79">
+                 <item row="1" column="2" colspan="2">
+                  <widget class="QGroupBox" name="groupBox_64">
+                   <property name="title">
+                    <string>Procesamiento</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0" colspan="2">
+                  <widget class="QGroupBox" name="groupBox_65">
+                   <property name="title">
+                    <string>General</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2" colspan="2">
+                  <widget class="QGroupBox" name="groupBox_66">
+                   <property name="title">
+                    <string>Configuración</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0" colspan="2">
+                  <widget class="QGroupBox" name="groupBox_67">
+                   <property name="title">
+                    <string>Ejecución</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_23">
+                <attribute name="title">
+                 <string>Mosaico</string>
+                </attribute>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QPushButton" name="pushButton_9">
+            <property name="maximumSize">
+             <size>
+              <width>300</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Finalizar</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="3">
+           <widget class="QLabel" name="label_135">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>18</pointsize>
+              <weight>75</weight>
+              <italic>false</italic>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>RESULTADOS</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QGroupBox" name="groupBox_68">
+            <property name="minimumSize">
+             <size>
+              <width>400</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>400</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Reporte</string>
+            </property>
+            <layout class="QFormLayout" name="formLayout">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_140">
+               <property name="text">
+                <string>Incluir:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QCheckBox" name="checkBox_2">
+               <property name="text">
+                <string>Registro Fotográfico</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QCheckBox" name="checkBox_36">
+               <property name="text">
+                <string>Telemetria</string>
+               </property>
+               <attribute name="buttonGroup">
+                <string notr="true">buttonGroup_3</string>
+               </attribute>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QCheckBox" name="checkBox_34">
+               <property name="text">
+                <string>Todo</string>
+               </property>
+               <attribute name="buttonGroup">
+                <string notr="true">buttonGroup_3</string>
+               </attribute>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QPushButton" name="pushButton_10">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>1</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+               </property>
+               <property name="text">
+                <string>Exportar PDF</string>
+               </property>
+               <property name="icon">
+                <iconset resource="imagenes.qrc">
+                 <normaloff>:/resultados/Imagenes/PackIconos/resultados/ic_archive.png</normaloff>:/resultados/Imagenes/PackIconos/resultados/ic_archive.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>32</width>
+                 <height>32</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QPushButton" name="pushButton_11">
+               <property name="text">
+                <string>Finalizar</string>
+               </property>
+               <property name="icon">
+                <iconset resource="imagenes.qrc">
+                 <normaloff>:/incio/Imagenes/PackIconos/inicio/ic_home_blue.png</normaloff>:/incio/Imagenes/PackIconos/inicio/ic_home_blue.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>32</width>
+                 <height>32</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
          </layout>
+         <zorder>widget_2</zorder>
+         <zorder>groupBox_68</zorder>
+         <zorder></zorder>
+         <zorder>pushButton_9</zorder>
+         <zorder>label_135</zorder>
         </widget>
        </widget>
       </item>
@@ -5130,10 +5442,10 @@
  </customwidgets>
  <resources>
   <include location="imagenes.qrc"/>
-  <include location="../../../../../.designer/backup/imagenes.qrc"/>
  </resources>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup_3"/>
  </buttongroups>
 </ui>
