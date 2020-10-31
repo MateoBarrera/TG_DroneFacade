@@ -24,7 +24,6 @@ class Matrice100Services:
         try:
             Control= rospy.ServiceProxy('dji_sdk/sdk_control_authority', dji_sdk.srv.SDKControlAuthority)
             Control(1)
-            Control.spin()
             return True
         except rospy.ServiceException as e:
             rospy.logerr("Service Control Authority call failed: %s"%e)
@@ -35,7 +34,6 @@ class Matrice100Services:
         try:
             Control = rospy.ServiceProxy('dji_sdk/sdk_control_authority', dji_sdk.srv.SDKControlAuthority)
             Control(0)
-            Control.spin()
             return True
         except rospy.ServiceException as e:
             rospy.logerr("Service Control Authority call failed: %s"%e)
@@ -46,7 +44,6 @@ class Matrice100Services:
         try:
             armService = rospy.ServiceProxy('dji_sdk/drone_arm_control', dji_sdk.srv.DroneArmControl)
             armService(True)
-            armService.spin()
             return True
         except rospy.ServiceException as e:
             rospy.logerr("Service arming call failed: %s"%e)
@@ -57,7 +54,6 @@ class Matrice100Services:
         try:
             armService = rospy.ServiceProxy('dji_sdk/drone_arm_control', dji_sdk.srv.DroneArmControl)
             armService(False)
-            armService.spin()
             return True
         except rospy.ServiceException as e:
             rospy.logerr("Service disarming call failed: %s"%e)
@@ -76,7 +72,6 @@ class Matrice100Services:
         try:
             TaskService = rospy.ServiceProxy('dji_sdk/drone_task_control', dji_sdk.srv.DroneTaskControl)
             TaskService(4)
-            TaskService.spin()
             return True
         except rospy.ServiceException as e:
             rospy.logerr("Service Takeoff call failed: %s"%e)
@@ -87,7 +82,6 @@ class Matrice100Services:
         try:
             TaskService = rospy.ServiceProxy('dji_sdk/drone_task_control', dji_sdk.srv.DroneTaskControl)
             TaskService(6)
-            TaskService.spin()
             return True
         except rospy.ServiceException as e:
             rospy.logerr("Service Landing call failed: %s"%e)
@@ -107,7 +101,6 @@ class Matrice100Services:
         try:
             TaskService = rospy.ServiceProxy('dji_sdk/drone_task_control', dji_sdk.srv.DroneTaskControl)
             TaskService(1)
-            TaskService.spin()
             return True
         except rospy.ServiceException as e:
             rospy.logerr("Service Go Home call failed: %s"%e)
@@ -118,7 +111,6 @@ class Matrice100Services:
         try:
             TaskService = rospy.ServiceProxy('dji_sdk/mission_waypoint_action', dji_sdk.srv.MissionWpAction)
             TaskService(0)
-            TaskService.spin()
             return True
         except rospy.ServiceException as e:
             rospy.logerr("Service Start WP Mission call failed: %s"%e)
@@ -129,7 +121,6 @@ class Matrice100Services:
         try:
             TaskService = rospy.ServiceProxy('dji_sdk/mission_waypoint_action', dji_sdk.srv.MissionWpAction)
             TaskService(1)
-            TaskService.spin()
             return True
         except rospy.ServiceException as e:
             rospy.logerr("Service Stop WP Mission call failed: %s"%e)
@@ -140,7 +131,6 @@ class Matrice100Services:
         try:
             TaskService = rospy.ServiceProxy('dji_sdk/mission_waypoint_action', dji_sdk.srv.MissionWpAction)
             TaskService(2)
-            TaskService.spin()
             return True
         except rospy.ServiceException as e:
             rospy.logerr("Service Pause WP Mission call failed: %s"%e)
@@ -151,7 +141,6 @@ class Matrice100Services:
         try:
             TaskService = rospy.ServiceProxy('dji_sdk/mission_waypoint_action', dji_sdk.srv.MissionWpAction)
             TaskService(0)
-            TaskService.spin()
             return True
         except rospy.ServiceException as e:
             rospy.logerr("Service Resume WP Mission call failed: %s"%e)
@@ -162,7 +151,6 @@ class Matrice100Services:
         try:
             TaskService = rospy.ServiceProxy('dji_sdk/mission_waypoint_upload', dji_sdk.srv.MissionWpUpload)
             TaskService(self.MissionTask)
-            TaskService.spin()
             return True
         except rospy.ServiceException as e:
             rospy.logerr("Service Upload WP Mission call failed: %s"%e)
@@ -172,7 +160,7 @@ class Matrice100Services:
         #Configuración de la Misión
         MissionTask = MissionWaypointTask()
         MissionTask.velocity_range = 10
-        MissionTask.idle_velocity = 5
+        MissionTask.idle_velocity = 0.5
         #Acción después del final: 0 Sin acción 1 Regreso al origen 2 Aterrizaje automático 3 Regreso a un punto determinado 4 Modo sin fin, no salir
         MissionTask.action_on_finish = 1 
         #Veces que se ejecuta 
@@ -253,10 +241,10 @@ class Matrice100Topics:
         self.imu_acceleration = None
         self.local = None
         self.flight_status = None
-        self.flightStatus()
-        self.batteryState()
-        self.flightStatus()
-        self.gpsHealth()
+        #self.flightStatus()
+        #self.batteryState()
+        #self.flightStatus()
+        #self.gpsHealth()
         pass
 
     def batteryState(self):
@@ -266,7 +254,8 @@ class Matrice100Topics:
             print("Failed to subscribe battery state: %s"%e)
 
     def _batteryCB(self, data):
-        self.battery = 100*(data.percentage)
+        self.battery = (data.percentage)
+        print(self.battery)
 
     def gpsHealth(self):
         try:
@@ -276,6 +265,7 @@ class Matrice100Topics:
 
     def _gpsCB(self, data):
         self.gps_health = data.data
+        print(self.gps_health)
 
     def gpsPosition(self):
         try:
@@ -284,9 +274,12 @@ class Matrice100Topics:
             print("Failed to subscribe GPS position: %s"%e)
 
     def _gpsPositionCB(self, data):
-        self.position_status = data.status
-        self.position = (data.latitud, data.longitude, data.altitude)
-        self.position_covariance = data.postion_covariance
+        self.position_status = data.status.status
+        self.position = (data.latitude, data.longitude, data.altitude)
+        self.position_covariance = data.position_covariance
+        print('position_status:'+str(self.position_status))
+        print('position:'+str(self.position))
+        print('position_covariance:'+str(self.position_covariance))
 
     def imu(self):
         try:
@@ -295,9 +288,13 @@ class Matrice100Topics:
             print("Failed to subscribe GPS position: %s"%e)
 
     def _imuCB(self, data):
-        self.imu_orientation = data.orientation_covariance
-        self.imu_velocity = data.angular_velocity_covariance
-        self.imu_acceleration = data.linear_acceleration_covariance
+        self.imu_orientation = data.orientation
+        self.imu_velocity = data.angular_velocity
+        self.imu_acceleration = data.linear_acceleration
+        print('imu_orientation:'+str(self.imu_orientation))
+        print('imu_velocity:'+str(self.imu_velocity))
+        print('imu_acc:'+str(self.imu_acceleration))
+        
 
     def localPosition(self):
         try:
@@ -315,6 +312,7 @@ class Matrice100Topics:
 
     def _flightCB(self, data):
         self.flight_status = data.data
+        print('flight status:'+ str(self.flight_status))
 
     def localPositionCB(self, data):
         self.local = data.Point
@@ -347,7 +345,10 @@ def main():
     
     print(coordenadas)
     
+    topic.imu()
+    rospy.spin()
     # ROS main loop
+    '''
     rospy.loginfo("Generando misión")
     service.waypoint_mission(coordenadas)
     service.uploadMission()
@@ -356,24 +357,21 @@ def main():
     rospy.loginfo("get Control")
     status = service.getSDKControl()
     if status:
-        while True: 
-            print(topic.flight_status)
-            if topic.flight_status == 3:
-                
-                break 
-        rospy.loginfo("start Mission")
-        try:
-            service.startMission()
-        except keyboardInterrupt as e:
-            pass
+        #while True: 
+        print(topic.flight_status)
+        if topic.flight_status == 3:
+            rospy.loginfo("start Mission")
+            try:
+                service.startMission()
+            except rospy.ServiceException as e:
+                rospy.loginfo("landing")
+                service.landing()
+                while True: 
+                    if topic.flight_status == 5:
+                        break 
         else:
-            rospy.loginfo("landing")
-            service.landing()
-            while True: 
-                if topic.flight_status == 5:
-                    break 
             rospy.loginfo("realse Control")
-            service.releaseSDKControl()
+            service.releaseSDKControl()'''
     
 
 
