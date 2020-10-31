@@ -241,7 +241,7 @@ class Matrice100Topics:
         self.imu_acceleration = None
         self.local = None
         self.flight_status = None
-        #self.flightStatus()
+        self.flightStatus()
         #self.batteryState()
         #self.flightStatus()
         #self.gpsHealth()
@@ -312,7 +312,7 @@ class Matrice100Topics:
 
     def _flightCB(self, data):
         self.flight_status = data.data
-        print('flight status:'+ str(self.flight_status))
+        #print('flight status:'+ str(self.flight_status))
 
     def localPositionCB(self, data):
         self.local = data.Point
@@ -333,29 +333,32 @@ def main():
     print("Capturar Waypoint 2:")
     input("Presione enter para continuar...")
     waypoint2 = rospy.wait_for_message('dji_sdk/gps_position', NavSatFix)
-    print("Wayponint 1: " + str(waypoint2.latitude,waypoint2.longitude,waypoint2.altitude))
-    print("\n")
+    print(waypoint2.latitude,waypoint2.longitude,waypoint2.altitude)
     print("Capturar Waypoint 1:")
     input("Presione enter para continuar...")
     waypoint1 = rospy.wait_for_message('dji_sdk/gps_position', NavSatFix)
-    print("Wayponint 2: " + str(waypoint1.latitude,waypoint1.longitude,waypoint1.altitude))
-    status = service.setLocalPosition()
+    print(waypoint1.latitude,waypoint1.longitude,waypoint1.altitude)
+    waypoint1.latitude = 3.4036057784757636
+    waypoint1.longitude = -76.5488217339057
+    waypoint1.altitude = 951.6124267578125
+
+    waypoint2.latitude = 3.4031985991609472
+    waypoint2.longitude = -76.54882609581352
+    waypoint2.altitude = 951.3836059570312
+    status = True#service.setLocalPosition()
     if status:
         position = rospy.wait_for_message('dji_sdk/gps_position', NavSatFix)
     print(position.latitude,position.longitude,position.altitude)
     
     coordenadas = pd.DataFrame(columns=['latitude','longitude','altitude'],)
-    coordenadas = coordenadas.append({'latitude': waypoint1.latitude, 'longitude': waypoint1.longitude, 'altitude': waypoint1.altitude+20 },ignore_index=True)
-    coordenadas = coordenadas.append({'latitude': waypoint2.latitude, 'longitude': waypoint2.longitude, 'altitude': waypoint2.altitude+20 },ignore_index=True)
-    coordenadas = coordenadas.append({'latitude': waypoint2.latitude, 'longitude': waypoint2.longitude, 'altitude': waypoint2.altitude+18},ignore_index=True)
-    coordenadas = coordenadas.append({'latitude': waypoint1.latitude, 'longitude': waypoint1.longitude, 'altitude': waypoint1.altitude+18 },ignore_index=True)
-    coordenadas = coordenadas.append({'latitude': waypoint1.latitude, 'longitude': waypoint1.longitude, 'altitude': waypoint1.altitude+12},ignore_index=True)
-    coordenadas = coordenadas.append({'latitude': waypoint2.latitude, 'longitude': waypoint2.longitude, 'altitude': waypoint2.altitude+12 },ignore_index=True) 
+    coordenadas = coordenadas.append({'latitude': waypoint1.latitude, 'longitude': waypoint1.longitude, 'altitude': 20 },ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': waypoint2.latitude, 'longitude': waypoint2.longitude, 'altitude': 20 },ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': waypoint2.latitude, 'longitude': waypoint2.longitude, 'altitude': 18},ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': waypoint1.latitude, 'longitude': waypoint1.longitude, 'altitude': 18 },ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': waypoint1.latitude, 'longitude': waypoint1.longitude, 'altitude': 12},ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': waypoint2.latitude, 'longitude': waypoint2.longitude, 'altitude': 12 },ignore_index=True) 
     
     print(coordenadas)
-    
-    topic.imu()
-    rospy.spin()
     # ROS main loop
     rospy.loginfo("Generando misión")
     service.waypoint_mission(coordenadas)
@@ -363,6 +366,7 @@ def main():
     rospy.loginfo("Carga Correcta!")
 
     rospy.loginfo("get Control")
+    input("Takeoff done...")
     status = service.getSDKControl()
     if status:
         #while True: 
@@ -379,9 +383,9 @@ def main():
                     if topic.flight_status == 5:
                         break 
         else:
-            rospy.loginfo("realse Control")
+            rospy.loginfo("Release Control")
             service.releaseSDKControl()
-    
+        
 if __name__ == '__main__':
     try:
         main()
