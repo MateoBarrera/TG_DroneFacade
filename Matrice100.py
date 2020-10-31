@@ -329,26 +329,36 @@ def main():
     topic = Matrice100Topics()
     # ROS loop rate, [Hz]
     rate = rospy.Rate(20.0) 
- 
+
     status = service.setLocalPosition()
     if status:
         position = rospy.wait_for_message('dji_sdk/gps_position', NavSatFix)
     print(position.latitude,position.longitude,position.altitude)
     
+    print("Capturar Waypoint 2:")
+    input("Presione enter para continuar...")
+    waypoint2 = rospy.wait_for_message('dji_sdk/gps_position', NavSatFix)
+    print("Wayponint 1: " + str(waypoint2.latitude,waypoint2.longitude,waypoint2.altitude))
+    print("\n")
+    print("Capturar Waypoint 1:")
+    input("Presione enter para continuar...")
+    waypoint1 = rospy.wait_for_message('dji_sdk/gps_position', NavSatFix)
+    print("Wayponint 2: " + str(waypoint1.latitude,waypoint1.longitude,waypoint1.altitude))
+
+    
     coordenadas = pd.DataFrame(columns=['latitude','longitude','altitude'],)
-    coordenadas = coordenadas.append({'latitude': position.latitude, 'longitude': position.longitude, 'altitude': position.altitude+24 },ignore_index=True)
-    coordenadas = coordenadas.append({'latitude': position.latitude+0.0002, 'longitude': position.longitude, 'altitude': position.altitude+24 },ignore_index=True)
-    coordenadas = coordenadas.append({'latitude': position.latitude+0.0002, 'longitude': position.longitude, 'altitude': position.altitude+18},ignore_index=True)
-    coordenadas = coordenadas.append({'latitude': position.latitude, 'longitude': position.longitude, 'altitude': position.altitude+18 },ignore_index=True)
-    coordenadas = coordenadas.append({'latitude': position.latitude, 'longitude': position.longitude, 'altitude': position.altitude+12},ignore_index=True)
-    coordenadas = coordenadas.append({'latitude': position.latitude+0.0002, 'longitude': position.longitude, 'altitude': position.altitude+12 },ignore_index=True) 
+    coordenadas = coordenadas.append({'latitude': waypoint1.latitude, 'longitude': waypoint1.longitude, 'altitude': waypoint1.altitude+20 },ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': waypoint2.latitude, 'longitude': waypoint2.longitude, 'altitude': waypoint2.altitude+20 },ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': waypoint2.latitude, 'longitude': waypoint2.longitude, 'altitude': waypoint2.altitude+18},ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': waypoint1.latitude, 'longitude': waypoint1.longitude, 'altitude': waypoint1.altitude+18 },ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': waypoint1.latitude, 'longitude': waypoint1.longitude, 'altitude': waypoint1.altitude+12},ignore_index=True)
+    coordenadas = coordenadas.append({'latitude': waypoint2.latitude, 'longitude': waypoint2.longitude, 'altitude': waypoint2.altitude+12 },ignore_index=True) 
     
     print(coordenadas)
     
     topic.imu()
     rospy.spin()
     # ROS main loop
-    '''
     rospy.loginfo("Generando misión")
     service.waypoint_mission(coordenadas)
     service.uploadMission()
@@ -359,6 +369,7 @@ def main():
     if status:
         #while True: 
         print(topic.flight_status)
+        input("Presione enter para Iniciar...")
         if topic.flight_status == 3:
             rospy.loginfo("start Mission")
             try:
@@ -371,10 +382,8 @@ def main():
                         break 
         else:
             rospy.loginfo("realse Control")
-            service.releaseSDKControl()'''
+            service.releaseSDKControl()
     
-
-
 if __name__ == '__main__':
     try:
         main()
