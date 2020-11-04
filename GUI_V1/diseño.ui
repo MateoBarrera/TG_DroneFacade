@@ -2229,7 +2229,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="area1Page1">
          <layout class="QGridLayout" name="gridLayout_6">
@@ -2499,6 +2499,9 @@
                  <width>16777215</width>
                  <height>20</height>
                 </size>
+               </property>
+               <property name="text">
+                <string/>
                </property>
                <property name="frame">
                 <bool>false</bool>
@@ -3300,7 +3303,7 @@
              </size>
             </property>
             <property name="title">
-             <string>Importar waypoints</string>
+             <string>Datos de la fachada</string>
             </property>
             <layout class="QGridLayout" name="gridLayout_9">
              <item row="0" column="1" colspan="2">
@@ -3405,7 +3408,7 @@
             </property>
             <property name="maximumSize">
              <size>
-              <width>860</width>
+              <width>960</width>
               <height>16777215</height>
              </size>
             </property>
@@ -3413,6 +3416,44 @@
              <string>Generación de trayectoria</string>
             </property>
             <layout class="QGridLayout" name="gridLayout_10">
+             <item row="0" column="1" rowspan="2" colspan="2">
+              <widget class="MplWidget" name="conftrayectoriaplot" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>470</width>
+                 <height>580</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QDoubleSpinBox" name="confalturaSpinBox">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="keyboardTracking">
+                <bool>true</bool>
+               </property>
+               <property name="suffix">
+                <string> m</string>
+               </property>
+               <property name="decimals">
+                <number>1</number>
+               </property>
+               <property name="minimum">
+                <double>6.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>36.000000000000000</double>
+               </property>
+              </widget>
+             </item>
              <item row="3" column="1">
               <widget class="QLabel" name="confalturaLabel">
                <property name="minimumSize">
@@ -3473,55 +3514,17 @@
                </property>
               </widget>
              </item>
-             <item row="0" column="1" rowspan="2" colspan="2">
-              <widget class="MplWidget" name="conftrayectoriaplot" native="true">
-               <property name="minimumSize">
-                <size>
-                 <width>470</width>
-                 <height>580</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true"/>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="2">
-              <widget class="QDoubleSpinBox" name="confalturaSpinBox">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="keyboardTracking">
-                <bool>true</bool>
-               </property>
-               <property name="suffix">
-                <string> m</string>
-               </property>
-               <property name="decimals">
-                <number>1</number>
-               </property>
-               <property name="minimum">
-                <double>6.000000000000000</double>
-               </property>
-               <property name="maximum">
-                <double>36.000000000000000</double>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="1" colspan="2">
+             <item row="7" column="1" colspan="2">
               <widget class="QTextBrowser" name="confdescripcionTrayectoria"/>
              </item>
-             <item row="5" column="1">
+             <item row="6" column="1">
               <widget class="QLabel" name="label_15">
                <property name="text">
                 <string>Descripción</string>
                </property>
               </widget>
              </item>
-             <item row="4" column="1" colspan="2">
+             <item row="5" column="1" colspan="2">
               <widget class="QPushButton" name="confgenerarTrayectoria">
                <property name="enabled">
                 <bool>false</bool>
@@ -3544,14 +3547,192 @@
                </property>
               </widget>
              </item>
+             <item row="4" column="1">
+              <widget class="QLabel" name="label_42">
+               <property name="minimumSize">
+                <size>
+                 <width>260</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Ancho Fachada</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
             </layout>
+            <zorder>conftrayectoriaplot</zorder>
+            <zorder>confalturaLabel</zorder>
+            <zorder>label_8</zorder>
+            <zorder>confalturaSpinBox</zorder>
+            <zorder>confdescripcionTrayectoria</zorder>
+            <zorder>label_15</zorder>
+            <zorder>confgenerarTrayectoria</zorder>
+            <zorder>label_42</zorder>
            </widget>
           </item>
          </layout>
         </widget>
         <widget class="QWidget" name="area1Page3">
          <layout class="QGridLayout" name="gridLayout_15">
-          <item row="0" column="0">
+          <item row="6" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="label_10">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_17">
+              <property name="maximumSize">
+               <size>
+                <width>40</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap resource="imagenes.qrc">:/uv/Imagenes/Univalle.svg</pixmap>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="maximumSize">
+               <size>
+                <width>120</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap resource="imagenes.qrc">:/psi/Imagenes/PSI.svg</pixmap>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="5" column="0">
+           <widget class="QGroupBox" name="groupBox_8">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Controles de ejecución</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_14">
+             <item row="0" column="0">
+              <widget class="QPushButton" name="ejectplayButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Iniciar</string>
+               </property>
+               <property name="icon">
+                <iconset resource="imagenes.qrc">
+                 <normaloff>:/ejecucion/Imagenes/PackIconos/ejecucion/ic_play_circle_outline.png</normaloff>:/ejecucion/Imagenes/PackIconos/ejecucion/ic_play_circle_outline.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QPushButton" name="ejectpausaButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Pausar</string>
+               </property>
+               <property name="icon">
+                <iconset resource="imagenes.qrc">
+                 <normaloff>:/ejecucion/Imagenes/PackIconos/ejecucion/ic_pause_circle_outline.png</normaloff>:/ejecucion/Imagenes/PackIconos/ejecucion/ic_pause_circle_outline.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QPushButton" name="ejectstopButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Detener</string>
+               </property>
+               <property name="icon">
+                <iconset resource="imagenes.qrc">
+                 <normaloff>:/ejecucion/Imagenes/PackIconos/ejecucion/ic_stop.png</normaloff>:/ejecucion/Imagenes/PackIconos/ejecucion/ic_stop.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
            <widget class="QLabel" name="label_11">
             <property name="minimumSize">
              <size>
@@ -3581,88 +3762,7 @@
             </property>
            </widget>
           </item>
-          <item row="4" column="0" colspan="3">
-           <widget class="QGroupBox" name="groupBox_8">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>100</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>Controles de ejecución</string>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_14">
-             <item row="0" column="0">
-              <widget class="QPushButton" name="ejectplayButton">
-               <property name="text">
-                <string>Iniciar</string>
-               </property>
-               <property name="icon">
-                <iconset resource="imagenes.qrc">
-                 <normaloff>:/ejecucion/Imagenes/PackIconos/ejecucion/ic_play_circle_outline.png</normaloff>:/ejecucion/Imagenes/PackIconos/ejecucion/ic_play_circle_outline.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>24</width>
-                 <height>24</height>
-                </size>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QPushButton" name="ejectpausaButton">
-               <property name="text">
-                <string>Pausar</string>
-               </property>
-               <property name="icon">
-                <iconset resource="imagenes.qrc">
-                 <normaloff>:/ejecucion/Imagenes/PackIconos/ejecucion/ic_pause_circle_outline.png</normaloff>:/ejecucion/Imagenes/PackIconos/ejecucion/ic_pause_circle_outline.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>24</width>
-                 <height>24</height>
-                </size>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QPushButton" name="ejectstopButton">
-               <property name="text">
-                <string>Detener</string>
-               </property>
-               <property name="icon">
-                <iconset resource="imagenes.qrc">
-                 <normaloff>:/ejecucion/Imagenes/PackIconos/ejecucion/ic_stop.png</normaloff>:/ejecucion/Imagenes/PackIconos/ejecucion/ic_stop.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>24</width>
-                 <height>24</height>
-                </size>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="2" column="0" rowspan="2" colspan="3">
+          <item row="3" column="0" rowspan="2">
            <widget class="QGroupBox" name="groupBox_10">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -3686,7 +3786,7 @@
                 <enum>QTabWidget::West</enum>
                </property>
                <property name="currentIndex">
-                <number>1</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="tab">
                 <attribute name="title">
@@ -3974,7 +4074,7 @@
             </layout>
            </widget>
           </item>
-          <item row="5" column="0" colspan="3">
+          <item row="6" column="0">
            <widget class="QPushButton" name="procesamientoButton">
             <property name="maximumSize">
              <size>
@@ -3997,56 +4097,136 @@
             </property>
            </widget>
           </item>
-          <item row="5" column="4">
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QLabel" name="label_10">
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_17">
-              <property name="maximumSize">
-               <size>
-                <width>40</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="pixmap">
-               <pixmap resource="imagenes.qrc">:/uv/Imagenes/Univalle.svg</pixmap>
-              </property>
-              <property name="scaledContents">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_2">
-              <property name="maximumSize">
-               <size>
-                <width>120</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="pixmap">
-               <pixmap resource="imagenes.qrc">:/psi/Imagenes/PSI.svg</pixmap>
-              </property>
-              <property name="scaledContents">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
+          <item row="2" column="0">
+           <widget class="QGroupBox" name="groupBox_4">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Estado de ejecución</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_17">
+             <item row="0" column="0">
+              <widget class="QLabel" name="ejectstatus">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Status</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </item>
-          <item row="1" column="4" rowspan="4">
+          <item row="2" column="1">
+           <widget class="QGroupBox" name="groupBox_14">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>560</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1000</width>
+              <height>120</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Generar Trayectoria</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_23">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_37">
+               <property name="minimumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="imagenes.qrc">:/configuracion/Imagenes/PackIconos/configuracion/ic_map.png</pixmap>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="3">
+              <widget class="QPushButton" name="ejectCapturarAyuda">
+               <property name="maximumSize">
+                <size>
+                 <width>32</width>
+                 <height>32</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="imagenes.qrc">
+                 <normaloff>:/incio/Imagenes/PackIconos/inicio/ic_help_outline_blue.png</normaloff>:/incio/Imagenes/PackIconos/inicio/ic_help_outline_blue.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QPushButton" name="ejectCapturarWP">
+               <property name="text">
+                <string>Capturar Waypoint</string>
+               </property>
+               <property name="icon">
+                <iconset resource="imagenes.qrc">
+                 <normaloff>:/configuracion/Imagenes/PackIconos/configuracion/ic_edit_location.png</normaloff>:/configuracion/Imagenes/PackIconos/configuracion/ic_edit_location.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="3" column="1" rowspan="3">
            <widget class="QGroupBox" name="groupBox_6">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -4062,7 +4242,7 @@
             </property>
             <property name="maximumSize">
              <size>
-              <width>860</width>
+              <width>1000</width>
               <height>16777215</height>
              </size>
             </property>
@@ -4070,6 +4250,13 @@
              <string>Información de trayectoria</string>
             </property>
             <layout class="QGridLayout" name="gridLayout_12">
+             <item row="8" column="1" colspan="3">
+              <widget class="QLabel" name="label_14">
+               <property name="text">
+                <string>Consola</string>
+               </property>
+              </widget>
+             </item>
              <item row="10" column="1">
               <spacer name="horizontalSpacer_7">
                <property name="orientation">
@@ -4083,30 +4270,7 @@
                </property>
               </spacer>
              </item>
-             <item row="9" column="1" colspan="4">
-              <widget class="QScrollArea" name="ejectconsola">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>200</height>
-                </size>
-               </property>
-               <property name="widgetResizable">
-                <bool>true</bool>
-               </property>
-               <widget class="QWidget" name="scrollAreaWidgetContents_2">
-                <property name="geometry">
-                 <rect>
-                  <x>0</x>
-                  <y>0</y>
-                  <width>508</width>
-                  <height>81</height>
-                 </rect>
-                </property>
-               </widget>
-              </widget>
-             </item>
-             <item row="10" column="2" colspan="3">
+             <item row="10" column="2" colspan="2">
               <widget class="QPushButton" name="pushButton_2">
                <property name="maximumSize">
                 <size>
@@ -4125,6 +4289,45 @@
                </property>
                <property name="flat">
                 <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1" rowspan="2" colspan="3">
+              <widget class="MplWidget" name="ejecttrayectoriaPlot" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>470</width>
+                 <height>340</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="1" colspan="3">
+              <widget class="QProgressBar" name="ejectprogressBar">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="value">
+                <number>70</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="textDirection">
+                <enum>QProgressBar::TopToBottom</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="1" colspan="3">
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>Progreso </string>
                </property>
               </widget>
              </item>
@@ -4153,82 +4356,8 @@
                </property>
               </widget>
              </item>
-             <item row="0" column="1" rowspan="2" colspan="4">
-              <widget class="MplWidget" name="ejecttrayectoriaPlot" native="true">
-               <property name="minimumSize">
-                <size>
-                 <width>470</width>
-                 <height>340</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true"/>
-               </property>
-              </widget>
-             </item>
-             <item row="7" column="1" colspan="4">
-              <widget class="QProgressBar" name="ejectprogressBar">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="value">
-                <number>70</number>
-               </property>
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="textDirection">
-                <enum>QProgressBar::TopToBottom</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="1" colspan="4">
-              <widget class="QLabel" name="label_5">
-               <property name="text">
-                <string>Progreso </string>
-               </property>
-              </widget>
-             </item>
-             <item row="8" column="1" colspan="4">
-              <widget class="QLabel" name="label_14">
-               <property name="text">
-                <string>Consola</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="1" column="0" colspan="3">
-           <widget class="QGroupBox" name="groupBox_4">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>60</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>Estado de ejecución</string>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_17">
-             <item row="0" column="0">
-              <widget class="QLabel" name="ejectstatus">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Status</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
+             <item row="9" column="1" colspan="3">
+              <widget class="QTextBrowser" name="ejectConsola"/>
              </item>
             </layout>
            </widget>
@@ -4327,8 +4456,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>328</width>
-                  <height>21</height>
+                  <width>16</width>
+                  <height>16</height>
                  </rect>
                 </property>
                </widget>

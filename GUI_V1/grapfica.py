@@ -61,6 +61,8 @@ def calcularTrayectoria(df_input):
     df = pd.DataFrame(columns=['wpt','lat','lon','ele'],)
     loop = 0
     contador = 1
+    wp = df_input.iloc[0].tolist()
+    print("wp:"+str(wp))
     for elem in df_input.itertuples():
         data_lat,data_lon,data_ele = elem[2], elem[3], elem[4]
         if loop % 2 == 0:
@@ -88,7 +90,7 @@ ax.xaxis.set_major_formatter(plt.FormatStrFormatter('%.03f'))
 
 ###
 
-rutaGPX = "/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/GUI_V1/Coordenadas.gpx"
+rutaGPX = "Coordenadas/Coordenadas_1.gpx"
 wp_entrada = leerFicheroGPX(rutaGPX)
 wp_trayectoria = calcularTrayectoria(wp_entrada)
 

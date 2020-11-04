@@ -20,6 +20,11 @@ from ClassDatos import Datos
 from PyQt5 import QtWidgets, QtGui, QtCore 
 from ClassWindow1 import Ui_DroneFacade
 from geopy.distance import geodesic
+import rospy
+from Matrice100 import Matrice100Services, Matrice100Topics
+
+from std_msgs.msg import UInt8
+from dji_sdk.msg import *
 
 class mywindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -72,8 +77,10 @@ class mywindow(QtWidgets.QMainWindow):
 
         self.wp_entrada = []
         self.wp_trayectoria = []
+        self.wp_UAV = []
+        self.distancia_wp = 5
         self.ui.confimportarWaypoints.clicked.connect(self.cargarWaypoint)
-        self.ui.confgenerarTrayectoria.clicked.connect(self.generarTrayectoria)
+        self.ui.confgenerarTrayectoria.clicked.connect(self.generarTrayectoriaConf)
         self.ui.conftrayectoriaplot.canvas.ax.set_facecolor('#faf9fa')
         self.ui.conftrayectoriaplot.canvas.ax.mouse_init(rotate_btn=1, zoom_btn=3)
 
@@ -93,6 +100,12 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.confcorreoUsuario.textChanged.connect(self.validacion_conf)
         
         #Ventana Ejecución
+        self.ros_node = []
+        self.conexion_jetson = True
+        self.ros_node_status = True
+        self.MatriceSrv = Matrice100Services()
+        self.MatriceTop = []
+        self.num_wp = 0
         self.ui.ejectGraficaTelemetria.setBackground(background='#ffffff')
         self.p1_telemetria = self.ui.ejectGraficaTelemetria.addPlot()
         self.p1_telemetria.setTitle('Captura de telemetría')
@@ -101,6 +114,10 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.ejecucionButton.clicked.connect(self.cargarConfiguracion)
         self.ui.ejecttrayectoriaPlot.canvas.ax.set_facecolor('#faf9fa')
         self.ui.ejecttrayectoriaPlot.canvas.ax.mouse_init(rotate_btn=1, zoom_btn=3)
+        self.ui.ejectCapturarWP.clicked.connect(self.capturar_wp)
+        self.ui.ejectplayButton.clicked.connect(self.iniciarMision)
+        self.ui.ejectpausaButton.clicked.connect(self.pausarMision)
+        self.ui.ejectstopButton.clicked.connect(self.detenerMision)
 
 
         #Ventana de Procesamiento
@@ -153,21 +170,13 @@ class mywindow(QtWidgets.QMainWindow):
         self.roi.setZValue(10)
         self.roi.sigRegionChanged.connect(self.actualizarROI)
 
-        self.image_out = cv2.imread("GUI_V1/imagen_1.png", cv2.IMREAD_COLOR)
+        self.image_out = cv2.imread("imagen_1.png", cv2.IMREAD_COLOR)
         self.visualizarImageOut(self.image_out)
 
         self.ui.procGenerarMosaico.clicked.connect(self.stitching)
         
-        setattr(Axes3D,'arrow3D',self._arrow3D)
-
         self.ui.resultadosButton_2.clicked.connect(self.display_5)
         self.ui.pushButton_7.clicked.connect(self.display_6)
-
-
-
-    def plot(self):
-        self.ui.confplot.plot(self.hour,self.temperature)
-
 
     ################# MAIN #################
 
@@ -250,11 +259,11 @@ class mywindow(QtWidgets.QMainWindow):
         if filename[0]:
             self.ui.confrutaWaypoints.setText(filename[0])
             self.wp_entrada = self.leerFicheroGPX(filename[0])
-            wp_entrada_ydata = self.wp_entrada['lat'].tolist()
-            wp_entrada_xdata = self.wp_entrada['lon'].tolist()
-            wp_entrada_zdata = self.wp_entrada['ele'].tolist()
+            wp_entrada_ydata = self.wp_entrada['latitude'].tolist()
+            wp_entrada_xdata = self.wp_entrada['longitude'].tolist()
+            wp_entrada_zdata = self.wp_entrada['altitude'].tolist()
             media_z = self.wp_entrada.mean(axis=0)
-            media_z = media_z['ele']
+            media_z = media_z['altitude']
 
             self.ui.conftrayectoriaplot.canvas.ax.cla()
             self.ui.conftrayectoriaplot.canvas.ax.set_zlim(media_z*0.9,media_z*1.1)
@@ -265,28 +274,31 @@ class mywindow(QtWidgets.QMainWindow):
         else:
             self.ui.confgenerarTrayectoria.setDisabled(True)
 
-    def generarTrayectoria(self):
+    def generarTrayectoriaConf(self):
+        setattr(Axes3D,'arrow3D',self._arrow3D_1)
+        ax = self.ui.conftrayectoriaplot.canvas
+        consola = self.ui.confdescripcionTrayectoria
         self.altura_fachada = self.ui.confalturaSpinBox.value()
-        self.wp_trayectoria = self.calcularTrayectoria(self.wp_entrada)
-        trayectoria_ydata = self.wp_trayectoria['lat'].tolist()
-        trayectoria_xdata = self.wp_trayectoria['lon'].tolist()
-        trayectoria_zdata = self.wp_trayectoria['ele'].tolist()
-        self.ui.conftrayectoriaplot.canvas.ax.cla()
-        ax = self.ui.conftrayectoriaplot.canvas.ax
-        #media_z = self.wp_trayectoria.mean(axis=0)
-        #media_z = media_z['ele']
-        ax.scatter(trayectoria_xdata, trayectoria_ydata, trayectoria_zdata, s= 50, c='darkcyan',label = 'Wpt trayectoria', marker = 'd')
-        ax.legend(loc='lower left', ncol=2, borderaxespad=0.)
+        self.generarTrayectoria(ax,consola)
+
+    def generarTrayectoria(self, canvas, consola):
+        self.wp_trayectoria = self.calcularTrayectoria(self.wp_entrada,consola)
+        trayectoria_ydata = self.wp_trayectoria['latitude'].tolist()
+        trayectoria_xdata = self.wp_trayectoria['longitude'].tolist()
+        trayectoria_zdata = self.wp_trayectoria['altitude'].tolist()
+        canvas.ax.cla()
+        canvas.ax.scatter(trayectoria_xdata, trayectoria_ydata, trayectoria_zdata, s= 50, c='darkcyan',label = 'Wpt trayectoria', marker = 'd')
+        canvas.ax.legend(loc='lower left', ncol=2, borderaxespad=0.)
         inicio = True
         for row in self.wp_trayectoria.itertuples():
             if inicio:
                 row_inicio = row
-                ax.text(row[3],row[2],row[4],'w'+str(row[1]), size= 10, zorder=10, color='navy')
+                canvas.ax.text(row[3],row[2],row[4],'w'+str(row[1]), size= 10, zorder=10, color='navy')
                 inicio = False
                 continue
-            ax.text(row[3],row[2],row[4],'w'+str(row[1]), size= 10, zorder=10, color='navy')
+            canvas.ax.text(row[3],row[2],row[4],'w'+str(row[1]), size= 10, zorder=10, color='navy')
             dx,dy,dz= row[3]-row_inicio[3],row[2]-row_inicio[2],row[4]-row_inicio[4]
-            ax.arrow3D(self,row_inicio[3],row_inicio[2],row_inicio[4],
+            canvas.ax.arrow3D(self,row_inicio[3],row_inicio[2],row_inicio[4],
                 dx,dy,dz,
                 mutation_scale=18,
                 arrowstyle="-|>",
@@ -294,26 +306,32 @@ class mywindow(QtWidgets.QMainWindow):
                 color = 'darkcyan')
             row_inicio = row
 
-        ax.view_init(elev=20., azim= -135 )
-        self.ui.conftrayectoriaplot.canvas.draw()
+        canvas.ax.view_init(elev=20., azim= -135 )
+        canvas.draw()
         distancia_trayectoria = self.longitudTrayectoria(self.wp_trayectoria)
-        self.ui.confdescripcionTrayectoria.append('\n'"Distancia estimada: "+str(distancia_trayectoria)[:7]+" m")
+        consola.append('\n'"Distancia estimada: "+str(distancia_trayectoria)[:7]+" m")
         corriente_empuje = 1000*self.UAV_Peso*self.UAV_Potencia_x_Kg/self.UAV_Voltaje_Bateria
         autonomia = (self.UAV_Capacidad_Bateria*self.UAV_Factor_Seguridad*60)/(corriente_empuje*1.5)
         tiempo_vuelo = distancia_trayectoria/(self.UAV_Velocidad_Crucero*60)
         factor_tiempo = tiempo_vuelo//autonomia
-        self.ui.confdescripcionTrayectoria.append("Tiempo estimado de vuelo: "+str(round(tiempo_vuelo))+" min")
-        self.ui.confdescripcionTrayectoria.append("Recambio de bateria: "+str(factor_tiempo)[:1])
-        if(factor_tiempo>=1): self.cambio_bateria(factor_tiempo)
+        consola.append("Tiempo estimado de vuelo: "+str(round(tiempo_vuelo))+" min")
+        consola.append("Recambio de bateria: "+str(factor_tiempo)[:1])
+        if(factor_tiempo>=1): self.cambio_bateria(factor_tiempo, canvas)
         
-    def _arrow3D(self, ax, x, y, z, dx, dy, dz, *args, **kwargs):
+    def _arrow3D_1(self, ax, x, y, z, dx, dy, dz, *args, **kwargs):
         '''Add an 3d arrow to an `Axes3D` instance.'''
 
         arrow = Arrow3D(x, y, z, dx, dy, dz, *args, **kwargs)
         self.ui.conftrayectoriaplot.canvas.ax.add_artist(arrow)
+
+    def _arrow3D_2(self, ax, x, y, z, dx, dy, dz, *args, **kwargs):
+        '''Add an 3d arrow to an `Axes3D` instance.'''
+
+        arrow = Arrow3D(x, y, z, dx, dy, dz, *args, **kwargs)      
+        self.ui.ejecttrayectoriaPlot.canvas.ax.add_artist(arrow)
      
     def leerFicheroGPX (self,dir):
-        df = pd.DataFrame(columns=['wpt','lat','lon','ele'])
+        df = pd.DataFrame(columns=['wpt','latitude','longitude','altitude'])
         tree = ET.parse(dir)
         root = tree.getroot()
         contador=1
@@ -330,31 +348,37 @@ class mywindow(QtWidgets.QMainWindow):
             else:
                 elev = elev
                 data_ele = (float(elev.replace('"', '').replace(',', '')))
-            df = df.append({'wpt': str(contador), 'lat': data_lat, 'lon': data_lon, 'ele': data_ele},ignore_index=True)
+            df = df.append({'wpt': str(contador), 'latitude': data_lat, 'longitude': data_lon, 'altitude': data_ele},ignore_index=True)
             self.ui.confdescripcionWpText.append('Waypoint '+str(contador)+':      Latitud >'+ str(data_lat)[:10]+'        Longitud >'+str(data_lon)[:10]+'       Elevación >'+str(data_ele)[:5]+' m.')
             contador=contador+1
         return df
 
-    def calcularTrayectoria(self, df_input):
-        df = pd.DataFrame(columns=['wpt','lat','lon','ele'],)
-        loop = 0
-        contador = 1
+    def calcularTrayectoria(self, df_input, consola):
+        df = pd.DataFrame(columns=['wpt','latitude','longitude','altitude'],)
         media_z = df_input.mean(axis=0)
-        altura = media_z['ele'] + self.altura_fachada
-        self.ui.confdescripcionTrayectoria.setText("WAYPOINTS TRAYECTORIA:")
-        for elem in df_input.itertuples():
-            data_lat,data_lon,data_ele = elem[2], elem[3], elem[4]
-            if loop % 2 == 0:
-                df = df.append({'wpt': str(contador), 'lat': data_lat, 'lon': data_lon, 'ele': data_ele + 2},ignore_index=True)
-                df = df.append({'wpt': str(contador + 1), 'lat': data_lat, 'lon': data_lon, 'ele': altura},ignore_index=True)
-            else:
-                df = df.append({'wpt': str(contador), 'lat': data_lat, 'lon': data_lon, 'ele': altura},ignore_index=True)
-                df = df.append({'wpt': str(contador + 1), 'lat': data_lat, 'lon': data_lon, 'ele': data_ele + 2},ignore_index=True)
+        elevacion = self.altura_fachada
+        contador = 1
+        wp1 = df_input.iloc[0].tolist()
+        wp2 = df_input.iloc[1].tolist()
+        intercalar = False
+        df = df.append({'wpt': 'Home', 'latitude': wp1[1], 'longitude': wp1[2], 'altitude': wp1[3]},ignore_index=True)
+        consola.append("WAYPOINTS TRAYECTORIA:")
+        while elevacion>5:
+            if not intercalar:
+                df = df.append({'wpt': contador, 'latitude': wp1[1], 'longitude': wp1[2], 'altitude': elevacion},ignore_index=True)
+                df = df.append({'wpt': contador+1,'latitude': wp2[1], 'longitude': wp2[2], 'altitude': elevacion},ignore_index=True)
+                intercalar = True
+                consola.append('Waypoint '+str(contador)+':      Latitud >'+ str(wp1[1])[:10]+'        Longitud >'+str(wp1[2])[:10]+'       Altitud >'+str(elevacion)+' m.')
+                consola.append('Waypoint '+str(contador+1)+':      Latitud >'+ str(wp2[1])[:10]+'        Longitud >'+str(wp2[2])[:10]+'       Altitud >'+str(elevacion)+' m.')
             
-            self.ui.confdescripcionTrayectoria.append('Waypoint '+str(contador)+':      Latitud >'+ str(data_lat)[:10]+'        Longitud >'+str(data_lon)[:10]+'       Elevación >'+str(df.at[contador-1,'ele'])[:5]+' m.')
-            self.ui.confdescripcionTrayectoria.append('Waypoint '+str(contador+1)+':      Latitud >'+ str(data_lat)[:10]+'        Longitud >'+str(data_lon)[:10]+'       Elevación >'+str(df.at[contador,'ele'])[:5]+' m.')
+            else:
+                df = df.append({'wpt': contador,'latitude': wp2[1], 'longitude': wp2[2], 'altitude': elevacion},ignore_index=True)
+                df = df.append({'wpt': contador+1, 'latitude': wp1[1], 'longitude': wp1[2], 'altitude': elevacion},ignore_index=True)
+                intercalar = False
+                consola.append('Waypoint '+str(contador)+':      Latitud >'+ str(wp2[1])[:10]+'        Longitud >'+str(wp2[2])[:10]+'       Altitud >'+str(elevacion)+' m.')
+                consola.append('Waypoint '+str(contador+1)+':      Latitud >'+ str(wp1[1])[:10]+'        Longitud >'+str(wp1[2])[:10]+'       Altitud >'+str(elevacion)+' m.')           
+            elevacion = elevacion-self.distancia_wp
             contador = contador + 2
-            loop = loop + 1
 
         return df
 
@@ -365,18 +389,17 @@ class mywindow(QtWidgets.QMainWindow):
         distancia,elevacion = 0,0
         for row in rows:
             distancia = geodesic((row[1],row[2]), (row_1[1],row_1[2])).m + distancia
-            elevacion = elevacion + abs(row[3]-row_1[3])
+            elevacion = elevacion + abs(row[3])
             row_1 = row
         recorrido = distancia + elevacion    
         return recorrido
 
-    def cambio_bateria(self, segmentos):
-        numero_wpt= int(self.wp_entrada['wpt'].max())
+    def cambio_bateria(self, segmentos, canvas):
+        numero_wpt = int(self.wp_entrada['wpt'].max())
         recambio = int(round(numero_wpt/(segmentos + 1)))
-        print(recambio)
-        entrada_ydata = self.wp_entrada['lat'].tolist()
-        entrada_xdata = self.wp_entrada['lon'].tolist()
-        entrada_zdata = self.wp_entrada['ele'].tolist()
+        entrada_ydata = self.wp_entrada['latitude'].tolist()
+        entrada_xdata = self.wp_entrada['longitude'].tolist()
+        entrada_zdata = self.wp_entrada['altitude'].tolist()
         recambio_xdata = list()
         recambio_ydata = list()
         recambio_zdata = list()
@@ -385,11 +408,10 @@ class mywindow(QtWidgets.QMainWindow):
             recambio_xdata.append(entrada_xdata[row_index])
             recambio_ydata.append(entrada_ydata[row_index])
             recambio_zdata.append(entrada_zdata[row_index]+1.5)
-            
-        ax = self.ui.conftrayectoriaplot.canvas.ax    
-        ax.scatter(recambio_xdata, recambio_ydata, recambio_zdata, s= 150, c='yellow',label = 'Cambio Bateria', marker = 'o')
-        ax.legend(loc='lower left', ncol=2, borderaxespad=0.)
-        self.ui.conftrayectoriaplot.canvas.draw()
+               
+        canvas.ax.scatter(recambio_xdata, recambio_ydata, recambio_zdata, s= 150, c='yellow',label = 'Cambio Bateria', marker = 'o')
+        canvas.ax.legend(loc='lower left', ncol=2, borderaxespad=0.)
+        canvas.draw()
 
     def validacion_conf(self):
         validacion = QtGui.QRegExpValidator(QtCore.QRegExp(self.reg_exp_1))
@@ -440,7 +462,7 @@ class mywindow(QtWidgets.QMainWindow):
                 print(e)
             else:
                 self.dialog_conf_done()
-                self.ui.ejecttrayectoriaPlot.canvas.ax = self.ui.conftrayectoriaplot.canvas.ax
+                self.ros_node = rospy.init_node('dronfacade_node', anonymous=True)
                 self.display_3()            
         else:
             self.dialog_conf_error()
@@ -490,9 +512,80 @@ class mywindow(QtWidgets.QMainWindow):
             color = '#ED0C0C'        
         sender.setStyleSheet('QLineEdit { color : %s }' % color)
 
-
-
     ################ EJECUCIÓN ################
+    def capturar_wp(self):
+        if self.conexion_jetson:
+            if True:#not rospy.is_shutdown():
+                #status, wp = self.MatriceSrv.getGPS()
+                status = True
+                wp = MissionWaypoint()
+
+                if status:
+                    if self.num_wp == 0:
+                        self.wp_entrada = []
+                        self.wp_entrada = pd.DataFrame(columns=['wpt','latitude','longitude','altitude'],)
+                        self.num_wp = 1
+                        wp.latitude = 3.4036057784757636
+                        wp.longitude = -76.5488217339057
+                        wp.altitude = 0
+                        self.wp_entrada= self.wp_entrada.append({'wpt': self.num_wp,'latitude': wp.latitude, 'longitude': wp.longitude, 'altitude': wp.altitude },ignore_index=True)
+                        self.ui.ejectConsola.append('WAYPOINTS ENTRADA:')
+                        self.ui.ejectConsola.append('Waypoint '+str(self.num_wp)+':      Latitud >'+ str(wp.latitude)[:10]+'        Longitud >'+str(wp.longitude)[:10]+'       Elevación >'+str(wp.altitude)[:5]+' m.')
+                    elif self.num_wp == 1:
+                        self.num_wp = 2
+                        wp.latitude = 3.4031985991609472
+                        wp.longitude = -76.54882609581352
+                        wp.altitude = 0
+                        self.wp_entrada= self.wp_entrada.append({'wpt': self.num_wp,'latitude': wp.latitude, 'longitude': wp.longitude, 'altitude': wp.altitude },ignore_index=True)
+                        self.ui.ejectConsola.append('Waypoint '+str(self.num_wp)+':      Latitud >'+ str(wp.latitude)[:10]+'        Longitud >'+str(wp.longitude)[:10]+'       Elevación >'+str(wp.altitude)[:5]+' m.')                    
+                        self.ui.ejectConsola.append('\n')
+                        self.ui.ejectCapturarWP.setDisabled(True)
+                        setattr(Axes3D,'arrow3D',self._arrow3D_2)
+                        canvas = self.ui.ejecttrayectoriaPlot.canvas
+                        consola = self.ui.ejectConsola
+                        self.altura_fachada = 20
+                        self.generarTrayectoria(canvas,consola)
+                else:
+                    print(wp)
+
+    def iniciarMision(self):
+        if self.conexion_jetson:
+            if True:#not rospy.is_shutdown():
+                try:
+                    sub = rospy.Subscriber('dji_sdk/gps_health', UInt8, self._gpsCB)  
+                except rospy.ServiceException as e:
+                    print("Failed to subscribe GPS health: %s"%e)
+                status = self.MatriceSrv.startMission()
+                if status:
+                    self.ui.ejectConsola.append('\n')
+                    self.ui.ejectConsola.append("Misión Iniciada!")
+                else:
+                    print(status)
+
+    def _gpsCB(self, data):
+        gps_health = data.data
+        if gps_health < 3:
+            self.detenerMision()
+
+    def pausarMision(self):
+        if self.conexion_jetson:
+            if True:#not rospy.is_shutdown():
+                status = self.MatriceSrv.pauseMission()
+                if status:
+                    self.ui.ejectConsola.append('\n')
+                    self.ui.ejectConsola.append("Misión pausada!")
+                else:
+                    print(status)
+    
+    def detenerMision(self):
+        if self.conexion_jetson:
+            if True:#not rospy.is_shutdown():
+                status = self.MatriceSrv.stopMission()
+                if status:
+                    self.ui.ejectConsola.append('\n')
+                    self.ui.ejectConsola.append("Misión detenida!")
+                else:
+                    print(status)
 
     ################ PROCESAMIENTO ################
     def procOpenDirectorio(self):

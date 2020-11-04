@@ -42,7 +42,7 @@ class Datos:
 
 
 
-        with open('GUI_V1/ciudades.csv') as csvfile:
+        with open('ciudades.csv') as csvfile:
             DANEcsv = csv.reader(csvfile,delimiter=';')
             #line=1
             self.departamento_list=[]
