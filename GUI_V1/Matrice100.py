@@ -162,11 +162,11 @@ class Matrice100Services:
         MissionTask.velocity_range = 10
         MissionTask.idle_velocity = 0.5
         #Acción después del final: 0 Sin acción 1 Regreso al origen 2 Aterrizaje automático 3 Regreso a un punto determinado 4 Modo sin fin, no salir
-        MissionTask.action_on_finish = 1 
+        MissionTask.action_on_finish = 0 
         #Veces que se ejecuta 
         MissionTask.mission_exec_times = 1 
         # Dirección: 0 modo automático (apuntando al siguiente waypoint) 1 bloquear el valor inicial 2 controlar con el mando a distancia 3 adoptar el ángulo de guiñada del waypoint
-        MissionTask.yaw_mode = 1  
+        MissionTask.yaw_mode = 2 
         MissionTask.trace_mode = 0 
         # Desconeción del remoto 
         MissionTask.action_on_rc_lost = 1 
@@ -180,7 +180,7 @@ class Matrice100Services:
         self.MissionTask = MissionTask
 
     def set_waypoints(self, latitude, longitude, altitude):
-        hovertime = 5
+        #hovertime = 5
         wp = MissionWaypoint()
         wp.latitude = latitude
         wp.longitude = longitude

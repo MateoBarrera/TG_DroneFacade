@@ -551,16 +551,25 @@ class mywindow(QtWidgets.QMainWindow):
     def iniciarMision(self):
         if self.conexion_jetson:
             if True:#not rospy.is_shutdown():
-                try:
-                    sub = rospy.Subscriber('dji_sdk/gps_health', UInt8, self._gpsCB)  
-                except rospy.ServiceException as e:
-                    print("Failed to subscribe GPS health: %s"%e)
-                status = self.MatriceSrv.startMission()
-                if status:
-                    self.ui.ejectConsola.append('\n')
-                    self.ui.ejectConsola.append("Misión Iniciada!")
+                status = self.MatriceSrv.setLocalPosition()
+                if status==True:
+                    try:
+                        sub = rospy.Subscriber('dji_sdk/gps_health', UInt8, self._gpsCB)  
+                    except rospy.ServiceException as e:
+                        print("Failed to subscribe GPS health: %s"%e)
+                    status = self.MatriceSrv.startMission()
+                    if status==True:
+                        self.ui.ejectConsola.append('\n')
+                        self.ui.ejectConsola.append("Misión Iniciada!")
+                    else:
+                        self.ui.ejectConsola.append('\n')
+                        self.ui.ejectConsola.append("No se pudo iniciar!")
+                        self.ui.ejectConsola.append("error: "+status)
                 else:
-                    print(status)
+
+                    self.ui.ejectConsola.append('\n')
+                    self.ui.ejectConsola.append("Nodo no disponible!")
+                    self.ui.ejectConsola.append("error: " +status)
 
     def _gpsCB(self, data):
         gps_health = data.data
