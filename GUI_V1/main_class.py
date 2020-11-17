@@ -17,14 +17,23 @@ from mpl_toolkits.mplot3d.proj3d import proj_transform
 from mpl_toolkits.mplot3d import axes3d, Axes3D
 from matplotlib.patches import FancyArrowPatch
 from ClassDatos import Datos
-from PyQt5 import QtWidgets, QtGui, QtCore 
+from PyQt5 import QtWidgets, QtGui, QtCore, QtWebEngineWidgets 
 from ClassWindow1 import Ui_DroneFacade
 from geopy.distance import geodesic
 import rospy
 from Matrice100 import Matrice100Services, Matrice100Topics
 
+import rosgraph
 from std_msgs.msg import UInt8
 from dji_sdk.msg import *
+
+import base64
+import paramiko
+from paramiko import SSHClient
+
+import folium
+import io
+
 
 class mywindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -35,8 +44,14 @@ class mywindow(QtWidgets.QMainWindow):
         self.calibracionCamara = (self.datos_obj.camara_id, self.datos_obj.camara_fx, self.datos_obj.camara_fy, self.datos_obj.camara_cx, 
             self.datos_obj.camara_cy, self.datos_obj.camara_k1, self.datos_obj.camara_k2, self.datos_obj.camara_cv_h, self.datos_obj.camara_cv_v)
         self.parametrosCamara()
-        self.departamento = self.datos_obj.departamento
+        self.departamento = self.datos_obj.departamento_list
 
+
+        #Jetson
+        ssh = paramiko.SSHClient()
+        ssh.load_system_host_keys()  
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy()) 
+        self.JetsonSSH = ssh 
 
         #Display buttons
         self.ui.inicioButton.clicked.connect(self.display_1)
@@ -77,7 +92,8 @@ class mywindow(QtWidgets.QMainWindow):
 
         self.wp_entrada = []
         self.wp_trayectoria = []
-        self.wp_UAV = []
+        self.wp_cap_1 = []
+        self.wp_cap_2 = []
         self.distancia_wp = 5
         self.ui.confimportarWaypoints.clicked.connect(self.cargarWaypoint)
         self.ui.confgenerarTrayectoria.clicked.connect(self.generarTrayectoriaConf)
@@ -100,12 +116,14 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.confcorreoUsuario.textChanged.connect(self.validacion_conf)
         
         #Ventana Ejecución
+        self.mision_iniciada = False
         self.ros_node = []
         self.conexion_jetson = True
         self.ros_node_status = True
         self.MatriceSrv = Matrice100Services()
         self.MatriceTop = []
         self.num_wp = 0
+        self.cameraPID = 0
         self.ui.ejectGraficaTelemetria.setBackground(background='#ffffff')
         self.p1_telemetria = self.ui.ejectGraficaTelemetria.addPlot()
         self.p1_telemetria.setTitle('Captura de telemetría')
@@ -118,6 +136,30 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.ejectplayButton.clicked.connect(self.iniciarMision)
         self.ui.ejectpausaButton.clicked.connect(self.pausarMision)
         self.ui.ejectstopButton.clicked.connect(self.detenerMision)
+        
+        master = rosgraph.Master('/rosout')
+        if master.is_online():
+            self.ui.ejectstatus.setStyleSheet('background-color: rgb(46, 140, 16);')
+            self.ui.ejectstatus.setText("CONECTADO ONBOARD PC")
+            try:
+                master.lookupNode('/dji_sdk')
+                self.ros_node = rospy.init_node('dronfacade_node', anonymous=True)
+                print("Nodo listo")
+                self.ui.ejectstatus.setStyleSheet('background-color: rgb(46, 140, 16);')
+                self.ui.ejectstatus.setText("CONECTADO")
+                self.ui.ejectpausaButton.setDisabled(True)
+                self.ui.ejectstopButton.setDisabled(True) 
+            except Exception as e:
+                print("Nodo no disponible")
+                self.ui.ejectstatus.setStyleSheet('background-color: rgb(235, 15, 15);')
+                self.ui.ejectstatus.setText("NO CONECTADO CON EL UAV")
+
+        else:
+            self.ui.ejectstatus.setStyleSheet('background-color: rgb(235, 15, 15);')
+            self.ui.ejectstatus.setText("ONBOARD PC NO DISPONIBLE")                     
+
+        
+       
 
 
         #Ventana de Procesamiento
@@ -251,8 +293,8 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.confcomboMunicipio.addItem("Municipio")
         dep = self.ui.confcomboDepartamento.currentText()
         self.datos_obj.buscarMunicipios(dep)
-        for index in range (len(self.datos_obj.municipios)):
-            self.ui.confcomboMunicipio.addItem(self.datos_obj.municipios[index])
+        for index in range (len(self.datos_obj.municipios_list)):
+            self.ui.confcomboMunicipio.addItem(self.datos_obj.municipios_list[index])
 
     def cargarWaypoint(self):
         filename = QtWidgets.QFileDialog.getOpenFileName(self, 'Cargar Waypoints', '/home', filter="gpx(*.gpx)")
@@ -262,8 +304,8 @@ class mywindow(QtWidgets.QMainWindow):
             wp_entrada_ydata = self.wp_entrada['latitude'].tolist()
             wp_entrada_xdata = self.wp_entrada['longitude'].tolist()
             wp_entrada_zdata = self.wp_entrada['altitude'].tolist()
-            media_z = self.wp_entrada.mean(axis=0)
-            media_z = media_z['altitude']
+            media = self.wp_entrada.mean(axis=0)
+            media_z = media['altitude']
 
             self.ui.conftrayectoriaplot.canvas.ax.cla()
             self.ui.conftrayectoriaplot.canvas.ax.set_zlim(media_z*0.9,media_z*1.1)
@@ -271,6 +313,20 @@ class mywindow(QtWidgets.QMainWindow):
             self.ui.conftrayectoriaplot.canvas.ax.legend(loc='lower left', ncol=2, borderaxespad=0.)
             self.ui.conftrayectoriaplot.canvas.draw()
             self.ui.confgenerarTrayectoria.setEnabled(True)
+            latitude_map = media['latitude']
+            longitude_map = media['longitude']
+            data = io.BytesIO()
+            mapa = folium.Map(location=[latitude_map, longitude_map], tiles="CartoDB positron", zoom_start=25)
+            feature_group = folium.FeatureGroup("Locations")
+
+            for coord in self.wp_entrada.itertuples():
+                feature_group.add_child(folium.Marker(location=[coord[2],coord[3]],popup="Waypoint "+str(coord[1])))
+
+            mapa.add_child(feature_group)
+
+            mapa.save(data, close_file=False)
+            self.ui.confmapa.setHtml(data.getvalue().decode())
+            self.ui.confmapa.show()
         else:
             self.ui.confgenerarTrayectoria.setDisabled(True)
 
@@ -361,7 +417,7 @@ class mywindow(QtWidgets.QMainWindow):
         wp1 = df_input.iloc[0].tolist()
         wp2 = df_input.iloc[1].tolist()
         intercalar = False
-        df = df.append({'wpt': 'Home', 'latitude': wp1[1], 'longitude': wp1[2], 'altitude': wp1[3]},ignore_index=True)
+        df = df.append({'wpt': 'Home', 'latitude': wp1[1], 'longitude': wp1[2], 'altitude': 0.0},ignore_index=True)
         consola.append("WAYPOINTS TRAYECTORIA:")
         while elevacion>5:
             if not intercalar:
@@ -462,7 +518,7 @@ class mywindow(QtWidgets.QMainWindow):
                 print(e)
             else:
                 self.dialog_conf_done()
-                self.ros_node = rospy.init_node('dronfacade_node', anonymous=True)
+                #self.ros_node = rospy.init_node('dronfacade_node', anonymous=True)
                 self.display_3()            
         else:
             self.dialog_conf_error()
@@ -513,86 +569,200 @@ class mywindow(QtWidgets.QMainWindow):
         sender.setStyleSheet('QLineEdit { color : %s }' % color)
 
     ################ EJECUCIÓN ################
-    def capturar_wp(self):
+    def capturar_wp(self):        
         if self.conexion_jetson:
-            if True:#not rospy.is_shutdown():
-                #status, wp = self.MatriceSrv.getGPS()
+            if not rospy.is_shutdown():
+                
                 status = True
-                wp = MissionWaypoint()
+                waypoint1 = MissionWaypoint()
+                waypoint1.latitude = 3.4036057784757636
+                waypoint1.longitude = -76.5488217339057
+                waypoint1.altitude = 2
+                waypoint2 = MissionWaypoint()
+                waypoint2.latitude = 3.4031985991609472
+                waypoint2.longitude = -76.54882609581352
+                waypoint2.altitude = 2
+                print(self.num_wp)
+                if self.num_wp==0:
+                    #####
+                    #status, wp = self.MatriceSrv.getGPS()
+                    if status:
+                        ###
+                        wp = waypoint1
+                        self.wp_cap_1 = wp
+                        self.num_wp = 1
+                        self.ui.ejectConsola.append('WAYPOINTS ENTRADA:')
+                        self.ui.ejectConsola.append('Waypoint 2:      Latitud >'+ str(wp.latitude)[:10]+'        Longitud >'+str(wp.longitude)[:10]+'       Elevación >'+str(wp.altitude)[:5]+' m.')
+                    
+                    else:
+                        self.ui.ejectConsola.append('Fallo lectura GPS!')
+                elif self.num_wp == 1:
+                    #####
+                    #status, wp = self.MatriceSrv.getGPS()
+                    if status:
+                        ###
+                        wp = waypoint2
+                        self.wp_cap_2 = wp
+                        self.num_wp = 2
+                        self.ui.ejectConsola.append('Waypoint 1:      Latitud >'+ str(wp.latitude)[:10]+'        Longitud >'+str(wp.longitude)[:10]+'       Elevación >'+str(wp.altitude)[:5]+' m.')                    
+                        self.ui.ejectConsola.append('\n')
 
-                if status:
-                    if self.num_wp == 0:
                         self.wp_entrada = []
                         self.wp_entrada = pd.DataFrame(columns=['wpt','latitude','longitude','altitude'],)
-                        self.num_wp = 1
-                        wp.latitude = 3.4036057784757636
-                        wp.longitude = -76.5488217339057
-                        wp.altitude = 0
-                        self.wp_entrada= self.wp_entrada.append({'wpt': self.num_wp,'latitude': wp.latitude, 'longitude': wp.longitude, 'altitude': wp.altitude },ignore_index=True)
-                        self.ui.ejectConsola.append('WAYPOINTS ENTRADA:')
-                        self.ui.ejectConsola.append('Waypoint '+str(self.num_wp)+':      Latitud >'+ str(wp.latitude)[:10]+'        Longitud >'+str(wp.longitude)[:10]+'       Elevación >'+str(wp.altitude)[:5]+' m.')
-                    elif self.num_wp == 1:
-                        self.num_wp = 2
-                        wp.latitude = 3.4031985991609472
-                        wp.longitude = -76.54882609581352
-                        wp.altitude = 0
-                        self.wp_entrada= self.wp_entrada.append({'wpt': self.num_wp,'latitude': wp.latitude, 'longitude': wp.longitude, 'altitude': wp.altitude },ignore_index=True)
-                        self.ui.ejectConsola.append('Waypoint '+str(self.num_wp)+':      Latitud >'+ str(wp.latitude)[:10]+'        Longitud >'+str(wp.longitude)[:10]+'       Elevación >'+str(wp.altitude)[:5]+' m.')                    
+                        #self.ui.ejectConsola.append('WAYPOINTS ENTRADA:')
+                        
+                        
+                        #####
+                        wp = self.wp_cap_2
+                        #wp = Waypoint1
+
+                        self.wp_entrada= self.wp_entrada.append({'wpt': 2,'latitude': wp.latitude, 'longitude': wp.longitude, 'altitude': 2 },ignore_index=True)
+                        #self.ui.ejectConsola.append('Waypoint 2:      Latitud >'+ str(wp.latitude)[:10]+'        Longitud >'+str(wp.longitude)[:10]+'       Elevación >'+str(wp.altitude)[:5]+' m.')
+                        
+                        #####
+                        wp = self.wp_cap_1
+                        #wp = waypoint2
+                        self.wp_entrada= self.wp_entrada.append({'wpt': 1,'latitude': wp.latitude, 'longitude': wp.longitude, 'altitude': 2 },ignore_index=True)
+                        #self.ui.ejectConsola.append('Waypoint 1:      Latitud >'+ str(wp.latitude)[:10]+'        Longitud >'+str(wp.longitude)[:10]+'       Elevación >'+str(wp.altitude)[:5]+' m.')                    
                         self.ui.ejectConsola.append('\n')
+                        self.ui.ejectConsola.append('WAYPOINTS Listos!')
                         self.ui.ejectCapturarWP.setDisabled(True)
                         setattr(Axes3D,'arrow3D',self._arrow3D_2)
                         canvas = self.ui.ejecttrayectoriaPlot.canvas
                         consola = self.ui.ejectConsola
-                        self.altura_fachada = 20
+                        self.altura_fachada = 12
+                        print(self.wp_entrada)
                         self.generarTrayectoria(canvas,consola)
-                else:
-                    print(wp)
+                        
+                    else:
+                        self.ui.ejectConsola.append('Fallo lectura GPS!')
+                    """                 else:
+                    
+                    self.wp_entrada = []
+                    self.wp_entrada = pd.DataFrame(columns=['wpt','latitude','longitude','altitude'],)
+                    #self.ui.ejectConsola.append('WAYPOINTS ENTRADA:')
+                    wp = self.wp_cap_2                    
+                    self.wp_entrada= self.wp_entrada.append({'wpt': self.num_wp,'latitude': wp.latitude, 'longitude': wp.longitude, 'altitude': wp.altitude },ignore_index=True)
+                    #self.ui.ejectConsola.append('Waypoint 2:      Latitud >'+ str(wp.latitude)[:10]+'        Longitud >'+str(wp.longitude)[:10]+'       Elevación >'+str(wp.altitude)[:5]+' m.')
+                    wp = self.wp_cap_1
+                    self.wp_entrada= self.wp_entrada.append({'wpt': self.num_wp,'latitude': wp.latitude, 'longitude': wp.longitude, 'altitude': wp.altitude },ignore_index=True)
+                    #self.ui.ejectConsola.append('Waypoint 1:      Latitud >'+ str(wp.latitude)[:10]+'        Longitud >'+str(wp.longitude)[:10]+'       Elevación >'+str(wp.altitude)[:5]+' m.')                    
+                    self.ui.ejectConsola.append('\n')
+                    self.ui.ejectConsola.append('WAYPOINTS Listos!')
+                    self.ui.ejectCapturarWP.setDisabled(True)
+                    setattr(Axes3D,'arrow3D',self._arrow3D_2)
+                    canvas = self.ui.ejecttrayectoriaPlot.canvas
+                    consola = self.ui.ejectConsola
+                    self.altura_fachada = 12
+                    print(self.wp_entrada)
+                    self.generarTrayectoria(canvas,consola) """
 
     def iniciarMision(self):
         if self.conexion_jetson:
-            if True:#not rospy.is_shutdown():
-                status = self.MatriceSrv.setLocalPosition()
-                if status==True:
-                    try:
-                        sub = rospy.Subscriber('dji_sdk/gps_health', UInt8, self._gpsCB)  
-                    except rospy.ServiceException as e:
-                        print("Failed to subscribe GPS health: %s"%e)
-                    status = self.MatriceSrv.startMission()
-                    if status==True:
-                        self.ui.ejectConsola.append('\n')
-                        self.ui.ejectConsola.append("Misión Iniciada!")
-                    else:
-                        self.ui.ejectConsola.append('\n')
-                        self.ui.ejectConsola.append("No se pudo iniciar!")
-                        self.ui.ejectConsola.append("error: "+status)
-                else:
+            """ self.JetsonSSH.connect('10.42.0.227', username='jetsonnano', password='Jetson3744')
+            stdin, stdout, stderr = self.JetsonSSH.exec_command('nohup python3 ZED.py &\necho $!')
+            for line in stdout:
+                self.cameraPID = line
+                break
+            self.JetsonSSH.close() """
+            if not rospy.is_shutdown():
+                if not self.mision_iniciada:
+                    self.MatriceSrv.waypoint_mission(self.wp_trayectoria)
+                    status = self.MatriceSrv.uploadMission()
+                    if status:
+                        status1 = self.MatriceSrv.getSDKControl()
+                        status2 = self.MatriceSrv.setLocalPosition()
+                        
+                        if status1 and status2==True:
+                            try:
+                                sub = rospy.Subscriber('dji_sdk/gps_health', UInt8, self._gpsCB)  
+                            except rospy.ServiceException as e:
+                                print("Failed to subscribe GPS health: %s"%e)
+                            
+                            status = self.MatriceSrv.startMission()
+                            if status==True:
+                                self.ui.ejectConsola.append('\n')
+                                self.ui.ejectConsola.append("Misión Iniciada!")
+                                self.ui.ejectplayButton.setDisabled(True)
+                                self.ui.ejectpausaButton.setEnabled(True)
+                                self.ui.ejectstopButton.setEnabled(True)
+                                self.mision_iniciada = True
+                                try:
+                                    sub_2 = rospy.Subscriber('/dji_sdk/flight_status', UInt8, self._flightCB)
+                                except rospy.SubscriberExeption as e:
+                                    print("Failed to subscribe GPS position: %s"%e)
+                            else:
+                                self.ui.ejectConsola.append('\n')
+                                self.ui.ejectConsola.append("No se pudo iniciar!")
+                                self.ui.ejectConsola.append("error: "+str(status))
+                        else:
 
-                    self.ui.ejectConsola.append('\n')
-                    self.ui.ejectConsola.append("Nodo no disponible!")
-                    self.ui.ejectConsola.append("error: " +status)
+                            self.ui.ejectConsola.append('\n')
+                            self.ui.ejectConsola.append("Nodo no disponible!")
+                            self.ui.ejectConsola.append("error: " +str(status1))
+                    else:
+
+                        self.ui.ejectConsola.append('\n')
+                        self.ui.ejectConsola.append("No se pudo cargar la misión!")
+                        self.ui.ejectConsola.append("error: " +str(status))
+                else:
+                    status = self.MatriceSrv.resumeMission()
+                    if status:
+                        self.ui.ejectConsola.append('\n')
+                        self.ui.ejectConsola.append("Misión resumida!")
+                    else:    
+                        self.ui.ejectConsola.append("error: " +str(status))
 
     def _gpsCB(self, data):
         gps_health = data.data
         if gps_health < 3:
             self.detenerMision()
-
-    def pausarMision(self):
-        if self.conexion_jetson:
-            if True:#not rospy.is_shutdown():
-                status = self.MatriceSrv.pauseMission()
-                if status:
-                    self.ui.ejectConsola.append('\n')
-                    self.ui.ejectConsola.append("Misión pausada!")
-                else:
-                    print(status)
     
+    def _flightCB(self,data):
+        flight_status = data.data
+        if flight_status==1:
+            self.ui.ejectstatus.setStyleSheet('background-color: rgb(73, 255, 51);')
+            self.ui.ejectstatus.setText("EN TIERRA")
+        if flight_status==3:
+            self.ui.ejectstatus.setStyleSheet('background-color: rgb(10, 87, 198);')
+            self.ui.ejectstatus.setText("TAKEOFF")
+        if flight_status==4:
+            self.ui.ejectstatus.setStyleSheet('background-color: rgb(247, 138, 16);')
+            self.ui.ejectstatus.setText("LANDING")
+        if flight_status==5:
+            self.ui.ejectstatus.setStyleSheet('background-color: rgb(247, 240, 16);')
+            self.ui.ejectstatus.setText("LANDIG FINISH")
+           
+    def pausarMision(self):
+        if self.mision_iniciada:
+            if self.conexion_jetson:
+                if not rospy.is_shutdown():
+                    status = self.MatriceSrv.pauseMission()
+                    if status:
+                        self.ui.ejectConsola.append('\n')
+                        self.ui.ejectConsola.append("Misión pausada!")
+                        self.ui.ejectplayButton.setEnabled(True)
+                        self.ui.ejectplayButton.setText('Resumen')
+                        self.ui.ejectpausaButton.setDisabled(True)
+                    else:
+                        print(status)
+                       
     def detenerMision(self):
         if self.conexion_jetson:
-            if True:#not rospy.is_shutdown():
+            """             self.JetsonSSH.connect('10.42.0.227', username='jetsonnano', password='Jetson3744')
+            stdin, stdout, stderr = self.JetsonSSH.exec_command('kill '+str(self.cameraPID))
+
+            self.JetsonSSH.close() """
+            if not rospy.is_shutdown():
                 status = self.MatriceSrv.stopMission()
                 if status:
                     self.ui.ejectConsola.append('\n')
                     self.ui.ejectConsola.append("Misión detenida!")
+                    self.ui.ejectpausaButton.setDisabled(True)
+                    self.ui.ejectstopButton.setDisabled(True)
+                    self.ui.ejectplayButton.setText('Iniciar')
+                    self.ui.ejectplayButton.setEnabled(True)
+                    self.mision_iniciada = False
                 else:
                     print(status)
 
@@ -604,6 +774,8 @@ class mywindow(QtWidgets.QMainWindow):
             self.procCargarImagenes(filename)
         
     def procCargarImagenes(self, directorioImagenes):
+        self.imagenes_entrada = []
+        self.imagen_entrada_index = 0
         imagePaths = sorted(list(paths.list_images(directorioImagenes)))
         self.directorioImagenes=directorioImagenes
         i=0 

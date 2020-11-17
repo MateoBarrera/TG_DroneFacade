@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import axes3d, Axes3D
 
 # Matplotlib canvas class to create figure
 class MplCanvas(Canvas):
-    def __init__(self):
+    def __init__(self):         
         self.fig = Figure()
         self.ax = Axes3D(self.fig)
         self.ax.zaxis.set_major_locator(plt.LinearLocator(5))
@@ -23,6 +23,7 @@ class MplCanvas(Canvas):
         Canvas.__init__(self, self.fig)
         Canvas.setSizePolicy(self, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         Canvas.updateGeometry(self)
+        
 # Matplotlib widget
 class MplWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):

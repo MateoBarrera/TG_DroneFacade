@@ -11,6 +11,7 @@ from geometry_msgs.msg import PointStamped
 #Todos los servicio y mensajes para el OnBoardSDK
 from dji_sdk.msg import *
 from dji_sdk.srv import *
+
 import pandas as pd
 
 #Class ROS services
@@ -110,41 +111,41 @@ class Matrice100Services:
         rospy.wait_for_service('dji_sdk/mission_waypoint_action')
         try:
             TaskService = rospy.ServiceProxy('dji_sdk/mission_waypoint_action', dji_sdk.srv.MissionWpAction)
-            TaskService(0)
-            return True
-        except rospy.ServiceException as e:
+            resp = TaskService(0)
+            return True, resp                
+        except Exception as e:
             rospy.logerr("Service Start WP Mission call failed: %s"%e)
-            return e
+            return False, e        
 
     def stopMission(self):
         rospy.wait_for_service('dji_sdk/mission_waypoint_action')
         try:
             TaskService = rospy.ServiceProxy('dji_sdk/mission_waypoint_action', dji_sdk.srv.MissionWpAction)
-            TaskService(1)
-            return True
-        except rospy.ServiceException as e:
+            resp = TaskService(1)
+            return True, resp
+        except Exception as e:
             rospy.logerr("Service Stop WP Mission call failed: %s"%e)
-            return e
+            return False, resp
 
     def pauseMission(self):
         rospy.wait_for_service('dji_sdk/mission_waypoint_action')
         try:
             TaskService = rospy.ServiceProxy('dji_sdk/mission_waypoint_action', dji_sdk.srv.MissionWpAction)
-            TaskService(2)
-            return True
+            resp = TaskService(2)
+            return True, resp
         except rospy.ServiceException as e:
             rospy.logerr("Service Pause WP Mission call failed: %s"%e)
-            return e
+            return False, resp
 
     def resumeMission(self):
         rospy.wait_for_service('dji_sdk/mission_waypoint_action')
         try:
             TaskService = rospy.ServiceProxy('dji_sdk/mission_waypoint_action', dji_sdk.srv.MissionWpAction)
-            TaskService(0)
-            return True
+            resp = TaskService(0)
+            return True, resp
         except rospy.ServiceException as e:
             rospy.logerr("Service Resume WP Mission call failed: %s"%e)
-            return e
+            return False, resp
 
     def uploadMission(self):
         rospy.wait_for_service('dji_sdk/mission_waypoint_upload')
@@ -173,7 +174,7 @@ class Matrice100Services:
         MissionTask.gimbal_pitch_mode = 0
         wps = []
         for coordinate in coord.itertuples():
-            wp = self.set_waypoints(coordinate[1],coordinate[2],coordinate[3])
+            wp = self.set_waypoints(coordinate[2],coordinate[3],coordinate[4])
             wps.append(wp)
 
         MissionTask.mission_waypoint = wps
@@ -229,10 +230,10 @@ class Matrice100Services:
 
     def getGPS(self):
         try:
-            message = rospy.wait_for_message('dji_sdk/gps_position', NavSatFix) 
+            message = rospy.wait_for_message('dji_sdk/gps_position', NavSatFix, timeout= 3.0)
             return True, message
-        except rospy.ServiceException as e:
-            print("Failed to subscribe battery state: %s"%e)
+        except (rospy.ServiceException, rospy.ROSException) as e:
+            e = "Failed to subscribe battery state: %s"%e
             return False, e
 
 
@@ -325,8 +326,8 @@ class Matrice100Topics:
     def localPositionCB(self, data):
         self.local = data.Point
 
-""" # Main function
-def main():
+# Main function""" 
+"""def main():
 
     # initiate node
     ros_node = rospy.init_node('setpoints_node', anonymous=True)
@@ -337,7 +338,11 @@ def main():
     topic = Matrice100Topics()
     # ROS loop rate, [Hz]
     rate = rospy.Rate(20.0) 
-    
+    #s, m= service.getGPS()
+    #print(m)
+    s = service.startMission()
+    print(s)
+     
     print("Capturar Waypoint 2:")
     input("Presione enter para continuar...")
     waypoint2 = rospy.wait_for_message('dji_sdk/gps_position', NavSatFix)
@@ -393,4 +398,6 @@ def main():
         else:
             rospy.loginfo("Release Control")
             service.releaseSDKControl()
-       """  
+
+ """
+#main() """
