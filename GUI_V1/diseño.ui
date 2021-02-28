@@ -3494,7 +3494,7 @@
                </widget>
               </widget>
              </item>
-             <item row="10" column="1" colspan="3">
+             <item row="9" column="1" colspan="3">
               <widget class="QTextBrowser" name="confdescripcionTrayectoria"/>
              </item>
              <item row="3" column="1">
@@ -3544,36 +3544,14 @@
                </property>
               </widget>
              </item>
-             <item row="4" column="1">
-              <widget class="QLabel" name="label_42">
-               <property name="minimumSize">
-                <size>
-                 <width>260</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Ancho Fachada</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="1">
+             <item row="5" column="1">
               <widget class="QLabel" name="label_15">
                <property name="text">
                 <string>Descripción</string>
                </property>
               </widget>
              </item>
-             <item row="5" column="1" colspan="3">
+             <item row="4" column="1" colspan="3">
               <widget class="QPushButton" name="confgenerarTrayectoria">
                <property name="enabled">
                 <bool>false</bool>
@@ -3603,7 +3581,6 @@
             <zorder>tabWidget_3</zorder>
             <zorder>label_15</zorder>
             <zorder>confalturaLabel</zorder>
-            <zorder>label_42</zorder>
             <zorder>confgenerarTrayectoria</zorder>
            </widget>
           </item>
@@ -3680,6 +3657,9 @@
             <layout class="QGridLayout" name="gridLayout_14">
              <item row="0" column="0">
               <widget class="QPushButton" name="ejectplayButton">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
                  <horstretch>0</horstretch>
@@ -3706,6 +3686,9 @@
              </item>
              <item row="0" column="1">
               <widget class="QPushButton" name="ejectpausaButton">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
                  <horstretch>0</horstretch>
@@ -3732,6 +3715,9 @@
              </item>
              <item row="0" column="2">
               <widget class="QPushButton" name="ejectstopButton">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
                  <horstretch>0</horstretch>
@@ -3827,7 +3813,7 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="2" column="2" alignment="Qt::AlignHCenter">
+                 <item row="2" column="3" alignment="Qt::AlignHCenter">
                   <widget class="QLabel" name="ejectbateria">
                    <property name="maximumSize">
                     <size>
@@ -3846,7 +3832,7 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="1" column="2">
+                 <item row="1" column="3">
                   <widget class="QLineEdit" name="ejecttimepoVuelo">
                    <property name="maximumSize">
                     <size>
@@ -3858,7 +3844,7 @@
                     <string/>
                    </property>
                    <property name="text">
-                    <string>0:00:00</string>
+                    <string>0:04:40</string>
                    </property>
                    <property name="frame">
                     <bool>false</bool>
@@ -3930,7 +3916,7 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="3" column="2" alignment="Qt::AlignHCenter">
+                 <item row="3" column="3" alignment="Qt::AlignHCenter">
                   <widget class="QLabel" name="ejectGPS">
                    <property name="maximumSize">
                     <size>
@@ -3949,7 +3935,7 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="4" column="2" alignment="Qt::AlignHCenter">
+                 <item row="4" column="3" alignment="Qt::AlignHCenter">
                   <widget class="QLabel" name="ejectIMU">
                    <property name="maximumSize">
                     <size>
@@ -3965,6 +3951,33 @@
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="2">
+                  <widget class="QLabel" name="label_43">
+                   <property name="maximumSize">
+                    <size>
+                     <width>30</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>OK</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="2">
+                  <widget class="QLabel" name="label_44">
+                   <property name="text">
+                    <string>OK</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="2">
+                  <widget class="QLabel" name="label_45">
+                   <property name="text">
+                    <string>70%</string>
                    </property>
                   </widget>
                  </item>
@@ -4144,8 +4157,11 @@
                  <height>20</height>
                 </size>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(54, 186, 41);</string>
+               </property>
                <property name="text">
-                <string>Status</string>
+                <string>CONECTADO</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -4277,49 +4293,14 @@
              <string>Información de trayectoria</string>
             </property>
             <layout class="QGridLayout" name="gridLayout_12">
-             <item row="8" column="1" colspan="3">
+             <item row="8" column="1" colspan="2">
               <widget class="QLabel" name="label_14">
                <property name="text">
                 <string>Consola</string>
                </property>
               </widget>
              </item>
-             <item row="10" column="1">
-              <spacer name="horizontalSpacer_7">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item row="10" column="2" colspan="2">
-              <widget class="QPushButton" name="pushButton_2">
-               <property name="maximumSize">
-                <size>
-                 <width>180</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Acceder a la consola</string>
-               </property>
-               <property name="autoDefault">
-                <bool>false</bool>
-               </property>
-               <property name="default">
-                <bool>false</bool>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1" rowspan="2" colspan="3">
+             <item row="0" column="1" rowspan="2" colspan="2">
               <widget class="MplWidget" name="ejecttrayectoriaPlot" native="true">
                <property name="minimumSize">
                 <size>
@@ -4332,7 +4313,7 @@
                </property>
               </widget>
              </item>
-             <item row="7" column="1" colspan="3">
+             <item row="7" column="1" colspan="2">
               <widget class="QProgressBar" name="ejectprogressBar">
                <property name="maximumSize">
                 <size>
@@ -4341,7 +4322,7 @@
                 </size>
                </property>
                <property name="value">
-                <number>0</number>
+                <number>100</number>
                </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
@@ -4351,7 +4332,7 @@
                </property>
               </widget>
              </item>
-             <item row="6" column="1" colspan="3">
+             <item row="6" column="1" colspan="2">
               <widget class="QLabel" name="label_5">
                <property name="text">
                 <string>Progreso </string>
@@ -4383,8 +4364,16 @@
                </property>
               </widget>
              </item>
-             <item row="9" column="1" colspan="3">
-              <widget class="QTextBrowser" name="ejectConsola"/>
+             <item row="9" column="1" colspan="2">
+              <widget class="QTextBrowser" name="ejectConsola">
+               <property name="html">
+                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Roboto'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
@@ -4473,23 +4462,6 @@
                </property>
               </widget>
              </item>
-             <item row="8" column="1" colspan="2">
-              <widget class="QScrollArea" name="procEstadoMosaico">
-               <property name="widgetResizable">
-                <bool>true</bool>
-               </property>
-               <widget class="QWidget" name="scrollAreaWidgetContents">
-                <property name="geometry">
-                 <rect>
-                  <x>0</x>
-                  <y>0</y>
-                  <width>98</width>
-                  <height>28</height>
-                 </rect>
-                </property>
-               </widget>
-              </widget>
-             </item>
              <item row="0" column="0" rowspan="2">
               <widget class="QLabel" name="label_27">
                <property name="maximumSize">
@@ -4508,6 +4480,9 @@
                 <bool>true</bool>
                </property>
               </widget>
+             </item>
+             <item row="8" column="1" colspan="2">
+              <widget class="QTextBrowser" name="procEstadoMosaico"/>
              </item>
             </layout>
            </widget>
@@ -5137,13 +5112,73 @@
                 <property name="title">
                  <string>Procesamiento</string>
                 </property>
-               </widget>
-              </item>
-              <item row="0" column="0" colspan="2">
-               <widget class="QGroupBox" name="groupBox_18">
-                <property name="title">
-                 <string>General</string>
-                </property>
+                <widget class="QLineEdit" name="procImageSize_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>235</x>
+                   <y>100</y>
+                   <width>163</width>
+                   <height>28</height>
+                  </rect>
+                 </property>
+                 <property name="frame">
+                  <bool>false</bool>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="procNumeroImg_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>235</x>
+                   <y>66</y>
+                   <width>163</width>
+                   <height>28</height>
+                  </rect>
+                 </property>
+                 <property name="frame">
+                  <bool>false</bool>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="dragEnabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_46">
+                 <property name="geometry">
+                  <rect>
+                   <x>22</x>
+                   <y>100</y>
+                   <width>207</width>
+                   <height>28</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>Tamaño de imágen</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="procNumeroImgLabel_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>22</x>
+                   <y>66</y>
+                   <width>207</width>
+                   <height>28</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>Numero de imágenes </string>
+                 </property>
+                </widget>
                </widget>
               </item>
               <item row="0" column="2" colspan="2">
@@ -5158,6 +5193,255 @@
                 <property name="title">
                  <string>Ejecución</string>
                 </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="2">
+               <widget class="QGroupBox" name="groupBox_18">
+                <property name="title">
+                 <string>General</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_29">
+                 <item row="4" column="1">
+                  <widget class="QLineEdit" name="confnombreUsuario_2">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="frame">
+                    <bool>false</bool>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Nombre de usuario</string>
+                   </property>
+                   <property name="clearButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QLineEdit" name="confnombreMision_2">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="inputMask">
+                    <string/>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="frame">
+                    <bool>false</bool>
+                   </property>
+                   <property name="echoMode">
+                    <enum>QLineEdit::Normal</enum>
+                   </property>
+                   <property name="dragEnabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Nombre de la misión</string>
+                   </property>
+                   <property name="cursorMoveStyle">
+                    <enum>Qt::LogicalMoveStyle</enum>
+                   </property>
+                   <property name="clearButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="1">
+                  <widget class="QLineEdit" name="confnombreFachada_2">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="frame">
+                    <bool>false</bool>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Nombre de la fachada</string>
+                   </property>
+                   <property name="clearButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="confnombreMision_4">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="inputMask">
+                    <string/>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="frame">
+                    <bool>false</bool>
+                   </property>
+                   <property name="echoMode">
+                    <enum>QLineEdit::Normal</enum>
+                   </property>
+                   <property name="dragEnabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Municipio</string>
+                   </property>
+                   <property name="cursorMoveStyle">
+                    <enum>Qt::LogicalMoveStyle</enum>
+                   </property>
+                   <property name="clearButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="1">
+                  <widget class="QLineEdit" name="confdescripcion_2">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="frame">
+                    <bool>false</bool>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Descripción</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="QLineEdit" name="confcorreoUsuario_2">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="frame">
+                    <bool>false</bool>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Correo electrónico del  usuario</string>
+                   </property>
+                   <property name="clearButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="infoIcon_2">
+                   <property name="maximumSize">
+                    <size>
+                     <width>40</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="imagenes.qrc">:/configuracion/Imagenes/PackIconos/configuracion/ic_perm_contact_calendar.png</pixmap>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0" rowspan="7">
+                  <spacer name="verticalSpacer_11">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>42</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="confnombreMision_3">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="inputMask">
+                    <string/>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="frame">
+                    <bool>false</bool>
+                   </property>
+                   <property name="echoMode">
+                    <enum>QLineEdit::Normal</enum>
+                   </property>
+                   <property name="dragEnabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Departamento</string>
+                   </property>
+                   <property name="cursorMoveStyle">
+                    <enum>Qt::LogicalMoveStyle</enum>
+                   </property>
+                   <property name="clearButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
              </layout>

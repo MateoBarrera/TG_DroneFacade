@@ -57,7 +57,6 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.inicioButton.clicked.connect(self.display_1)
         self.ui.configuracionButton.clicked.connect(self.display_2)
         self.ui.procesamientoButton.clicked.connect(self.display_4)
-        self.ui.resultadosButton.clicked.connect(self.display_5)
 
         #Especificaciones del UAV
         self.UAV_REF = "DJI Matrice 100"
@@ -138,12 +137,12 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.ejectstopButton.clicked.connect(self.detenerMision)
         
         master = rosgraph.Master('/rosout')
-        if master.is_online():
+        if True:#master.is_online():
             self.ui.ejectstatus.setStyleSheet('background-color: rgb(46, 140, 16);')
             self.ui.ejectstatus.setText("CONECTADO ONBOARD PC")
             try:
-                master.lookupNode('/dji_sdk')
-                self.ros_node = rospy.init_node('dronfacade_node', anonymous=True)
+                #master.lookupNode('/dji_sdk')
+                #self.ros_node = rospy.init_node('dronfacade_node', anonymous=True)
                 print("Nodo listo")
                 self.ui.ejectstatus.setStyleSheet('background-color: rgb(46, 140, 16);')
                 self.ui.ejectstatus.setText("CONECTADO")
@@ -158,16 +157,15 @@ class mywindow(QtWidgets.QMainWindow):
             self.ui.ejectstatus.setStyleSheet('background-color: rgb(235, 15, 15);')
             self.ui.ejectstatus.setText("ONBOARD PC NO DISPONIBLE")                     
 
-        
-       
-
 
         #Ventana de Procesamiento
         pg.setConfigOptions(imageAxisOrder='col-major')
         pg.setConfigOptions(antialias=True)
         self.imagenes_entrada = []
         self.imagen_entrada_index = 0
+        self.image_out = []
         self.image_out_size = []
+        self.mosaico = False
         self.directorioImagenes = ""
         self.alto_img_in = 0 
         self.acho_img_in = 0 
@@ -188,6 +186,7 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.procMostrarEjes.clicked.connect(self.mostarEjes)
         self.ui.procRegionInteres.clicked.connect(self.regionInteres)
         self.ui.procimageView.setBackground(background='#faf9fa')
+        self.ui.procExportar.clicked.connect(self.exportarImagen)
         
         
         #row=2, col=0
@@ -215,10 +214,12 @@ class mywindow(QtWidgets.QMainWindow):
         self.image_out = cv2.imread("imagen_1.png", cv2.IMREAD_COLOR)
         self.visualizarImageOut(self.image_out)
 
-        self.ui.procGenerarMosaico.clicked.connect(self.stitching)
+        self.ui.procGenerarMosaico.clicked.connect(self.preStitching)
         
-        self.ui.resultadosButton_2.clicked.connect(self.display_5)
+        self.ui.resultadosButton.clicked.connect(self.valiadacion_proc)
         self.ui.pushButton_7.clicked.connect(self.display_6)
+
+        #Ventana de Resultados
 
     ################# MAIN #################
 
@@ -251,7 +252,6 @@ class mywindow(QtWidgets.QMainWindow):
 
     def display_6(self):
         self.ui.area1.setCurrentIndex(5)
-
 
     ################ CONFIGURACIÓN ################
     def parametrosCamara(self):
@@ -472,23 +472,27 @@ class mywindow(QtWidgets.QMainWindow):
     def validacion_conf(self):
         validacion = QtGui.QRegExpValidator(QtCore.QRegExp(self.reg_exp_1))
         info_user_in = {self.ui.confnombreMision.text(), self.ui.confnombreUsuario.text(), self.ui.confnombreFachada.text(), self.ui.confdescripcion.text(), self.ui.confrefCamara.text()}
-                
+        flag_validacion = False        
         for info_user in info_user_in:
             state = validacion.validate(info_user,0)[0]
             if(state == QtGui.QValidator.Acceptable):
-                self.flag_validacion = True
+                flag_validacion = True
 
         validacion = QtGui.QRegExpValidator(QtCore.QRegExp(self.reg_exp_2))
         info_user_in_correo = self.ui.confcorreoUsuario.text()
         state = validacion.validate(info_user_in_correo,0)[0]
         if(state == QtGui.QValidator.Acceptable):
-           self.flag_validacion = True
+           flag_validacion = flag_validacion and True
+        else: flag_validacion = False
 
         info_user_in_dp = self.ui.confcomboDepartamento.currentText()   
         info_user_in_mp = self.ui.confcomboMunicipio.currentText()
         if(info_user_in_mp != "Municipio"):
-            self.flag_validacion = True
+            flag_validacion = flag_validacion and True
+        else: flag_validacion = False
 
+        self.flag_validacion = flag_validacion
+    
     def cargarConfiguracion(self):
         set_info_user = self.datos_obj
         if(self.flag_validacion):
@@ -525,7 +529,7 @@ class mywindow(QtWidgets.QMainWindow):
 
     def dialog_conf_error(self):
         dlg = QtWidgets.QMessageBox()
-        dlg.setText("Los datos_obj suministrados por el usuario son incorrectos.")
+        dlg.setText("Los datos suministrados por el usuario son incorrectos.")
         dlg.setWindowTitle("Upss! Datos invalidos")
         pixmap = QtGui.QPixmap("Imagenes/PackIconos/ejecucion/ic_highlight_off.png")
         pixmap.setDevicePixelRatio(2.0)
@@ -658,7 +662,13 @@ class mywindow(QtWidgets.QMainWindow):
                     self.generarTrayectoria(canvas,consola) """
 
     def iniciarMision(self):
-        if self.conexion_jetson:
+        self.ui.ejectConsola.append('\n')
+        self.ui.ejectConsola.append("Misión iniciada...")  
+        self.ui.ejectConsola.append('\n')
+        self.ui.ejectConsola.append("Misión finalizada!")  
+        self.ui.ejectplayButton.setDisabled(True)
+    
+        if False: #self.conexion_jetson:
             """ self.JetsonSSH.connect('10.42.0.227', username='jetsonnano', password='Jetson3744')
             stdin, stdout, stderr = self.JetsonSSH.exec_command('nohup python3 ZED.py &\necho $!')
             for line in stdout:
@@ -811,11 +821,13 @@ class mywindow(QtWidgets.QMainWindow):
             self.imagen_entrada_index=self.imagen_entrada_index-1
             self.visualizarImagenesEntrada()      
 
+    def preStitching(self):
+        self.ui.procEstadoMosaico.setText("[INFO] Uniendo imagenes...")
+        self.stitching()
+
     def stitching(self):
         # initialize OpenCV's image sticher object and then perform the image
         # stitching
-        #self.textBrowser.append('[INFO] stitching Images')
-        print("[INFO] stitching images...")
         stitcher = cv2.createStitcher() if imutils.is_cv3() else cv2.Stitcher_create()
         (status, stitched) = stitcher.stitch(self.imagenes_entrada)
 
@@ -826,9 +838,7 @@ class mywindow(QtWidgets.QMainWindow):
             # region from the stitched image
             if self.ui.procRecortarImage.isChecked():
                 # create a 10 pixel border surrounding the stitched image
-                #self.textBrowser.append('[INFO] Recortando')
-                #self.textBrowser.setText('[INFO] Recortando...')
-                print("[INFO] cropping...")
+                self.ui.procEstadoMosaico.setText("[INFO] Recortando...")
                 stitched = cv2.copyMakeBorder(stitched, 10, 10, 10, 10,
                     cv2.BORDER_CONSTANT, (0, 0, 0))
 
@@ -888,30 +898,26 @@ class mywindow(QtWidgets.QMainWindow):
                 # stitched = cv2.warpAffine(stitched,M,(width,height))
                 
                 stitched = cv2.rotate(stitched, cv2.ROTATE_90_COUNTERCLOCKWISE)
-            # cv2.imshow("estaes",stitched)
-            cv2.imwrite("/home/mateo/Escritorio/Universidad/TG/TG_DroneFacade/GUI_V1/Salida/Output.png", stitched)
-
-            # display the output stitched image to our screen
-            #stitched = cv2.cvtColor(stitched, cv2.COLOR_BGR2RGB)
-            
-            # cv2.imshow("estanoes",stitched)
             height, width, channel = stitched.shape
             step = channel * width
+            self.image_out = stitched
             self.image_out_size = stitched.shape
             self.visualizarImageOut(stitched)
-            #qImg = QImage(stitched.data, width, height, step, QImage.Format_RGB888)
-            #self.imagelabel.setPixmap(QPixmap.fromImage(qImg))
-            # cv2.imshow("Stitched", stitched)
-            # cv2.waitKey(0)
 
-            # otherwise the stitching failed, likely due to not enough keypoints)
-            # being 
-            #self.textBrowser.setText('[INFO] Stitching finalizado')
-            print("termino")
+            self.ui.procEstadoMosaico.setText("[INFO] Generación de mosaico termino!")
+            self.mosaico = True
             #self.timer_process.stop()
         else:
+            self.mosaico = False
             #self.textBrowser.setText("[INFO] image stitching failed ({})".format(status))
-            print("[INFO] image stitching failed ({})".format(status))
+            self.ui.procEstadoMosaico.setText("[FAILED] proceso fallo ({})".format(status))
+            if status == 1:
+                self.ui.procEstadoMosaico.append("[INFO] Numero de imagenes insuficiente.")
+            if status == 2:
+                self.ui.procEstadoMosaico.append("[INFO] Error en la estimación de la matriz homografica.")
+                self.ui.procEstadoMosaico.append("[INFO] Intente nuevamente.")
+            else:
+                self.ui.procEstadoMosaico.append("[INFO] Fallo inprevisto, intente nuevamente.")
 
     def visualizarImageOut(self, image_out):
         self.p1_imageView.clear()
@@ -924,6 +930,18 @@ class mywindow(QtWidgets.QMainWindow):
         self.image_view.rotate(270)
         self.p1_imageView.autoRange(False)
 
+    def exportarImagen(self):
+        if False:#not self.mosaico:
+            print(self.image_out_size)
+            self.ui.procEstadoMosaico.append("No hay nada que exportar.")
+        else:    
+            filename = QtWidgets.QFileDialog.getSaveFileName(self, 'Guardar mosaico', '/home/mateo', filter="Images (*.jpg)")
+            print(filename)
+            if filename[0].isalpha:
+                self.ui.procEstadoMosaico.append(filename[0]+".jpg")
+            cv2.imwrite(filename[0]+".jpg", self.image_out)
+            self.ui.procEstadoMosaico.append("Imagen guardada con exito!")
+    
     def interaccion(self):
         if(self.ui.procHabilitarInteraccion.isChecked()):
             self.p1_imageView.vb.setMouseEnabled(y=True,x=True)
@@ -971,7 +989,36 @@ class mywindow(QtWidgets.QMainWindow):
 
             self.close()
 
+    def valiadacion_proc(self):
+        if self.mosaico:
+            self.dialog_proc_done()
+            self.display_5()
+        else:
+            self.dialog_proc_error()
 
+    def dialog_proc_error(self):
+        dlg = QtWidgets.QMessageBox()
+        dlg.setText("Aun hay tarea por realizar en este módulo.")
+        dlg.setWindowTitle("Upss! Algo sucedio")
+        pixmap = QtGui.QPixmap("Imagenes/PackIconos/ejecucion/ic_highlight_off.png")
+        pixmap.setDevicePixelRatio(2.0)
+        dlg.setIconPixmap(pixmap)
+        pushButton = QtWidgets.QPushButton()
+        dlg.setStyleSheet('background-color: rgb(255, 255, 255);')
+        dlg.setDefaultButton(pushButton)
+        returnValue = dlg.exec()
+
+    def dialog_proc_done(self):
+        dlg = QtWidgets.QMessageBox()
+        dlg.setText("Resultados almacenados correctamente.")
+        dlg.setWindowTitle("Yeah! Información guardada")
+        pixmap = QtGui.QPixmap("Imagenes/PackIconos/ejecucion/ic_launch.png")
+        pixmap.setDevicePixelRatio(2.0)
+        dlg.setIconPixmap(pixmap)
+        pushButton = QtWidgets.QPushButton()
+        dlg.setStyleSheet('background-color: rgb(255, 255, 255);')
+        dlg.setDefaultButton(pushButton)
+        returnValue = dlg.exec() 
 class Arrow3D(FancyArrowPatch):
     def __init__(self, x, y, z, dx, dy, dz, *args, **kwargs):
         super().__init__((0,0), (0,0), *args, **kwargs)

@@ -278,14 +278,6 @@ class MySQL:
         salida[1] = img_np
         return salida
 
-
-
-
-
-
-
-
-
     def carga_telemetria(self):
         info = object
         sql = f"SELECT id FROM mision WHERE nombre_mision = '{info.nombre_de_la_mision}' AND nombre_usuario = '{info.nombre_de_usuario}"

@@ -49,7 +49,7 @@ time.sleep(5)
 
 c.close()"""
 
-
+"""
 import numpy as np
 import cv2 
 from imutils import paths
@@ -98,8 +98,8 @@ for frame in imagenes_entrada:
       
     # Apply Perspective Transform Algorithm 
     matrix = cv2.getPerspectiveTransform(pts1, pts2) 
-    """     for val in pts1:
-        cv2.circle(frame,(val[0],val[1]),5,(0,255,0),-1) """
+    for val in pts1:
+        cv2.circle(frame,(val[0],val[1]),5,(0,255,0),-1)
     M = cv2.getPerspectiveTransform(pts1,pts2)
     dst = cv2.warpPerspective(dst,M,(1280,720))
     gamma = 0.75
@@ -107,18 +107,18 @@ for frame in imagenes_entrada:
     for k in range(256):
         lookUpTable[0,k] = np.clip(pow(k / 255.0, gamma) * 255.0, 0, 255)
     res = cv2.LUT(dst, lookUpTable)
-    """     
+  
     cv2.imshow('mxasa',frame)
     cv2.imshow('ma',res)
     while(1):
         if cv2.waitKey(1) & 0xFF == ord('w'):
 
-            break  """
+            break
     
     cv2.imwrite("/home/mateo/Documentos/DataSet1_rect/imagen"+str(i)+".jpg",dst)
 
     i=i+1
-
+"""
 """
 img = cv2.imread ( 'ScriptsROS/modo1.png' , cv2.IMREAD_COLOR)
 # crear un objeto CLAHE (los argumentos son opcionales).
@@ -134,4 +134,13 @@ cv2.imshow( 'ScriptsROS/modo1_mod.png' , bgr)
 while(1):
     if cv2.waitKey(1) & 0xFF == ord('w'):
 
-        break """
+        break
+"""
+import time
+from MySQL_Connector import MySQL
+
+conector = MySQL()
+conector.conectar()
+conector.get_mision(1)
+time.sleep(2)
+conector.desconectar()

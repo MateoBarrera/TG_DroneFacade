@@ -5,7 +5,6 @@ import csv
 class Datos:
     def __init__(self):
         super().__init__()
-
         #CONFIGURACIÓN
         ##camara
         self.camara_id= "ZED StereoLab"
@@ -72,3 +71,4 @@ class Datos:
                     if aux==dep:
                         self.municipios_list.append(row[3])
                     line += 1
+
